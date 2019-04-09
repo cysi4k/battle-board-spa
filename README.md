@@ -1,7 +1,11 @@
 # BattleBoard
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
-For project it is necesery to install npm package and  Angular 7 then install Firebase using command `npm install firebase angularfire2 --save`.
+## UML Use Case Diagram
+![UML Use Case Diagram](../master/56795673_273610530195983_2529208044777111552_n.png)
+
+## Configuration 
+For Angular project to run properly, make sure your development environment includes Node.js® and an npm package manager.
+Then install Firebase using command `npm install firebase angularfire2 --save`.
 
 ## Development server
 
@@ -14,14 +18,6 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
 
