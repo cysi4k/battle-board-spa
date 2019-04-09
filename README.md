@@ -1,6 +1,7 @@
 # BattleBoard
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
+For project it is necesery to install npm package and then install Angular using command `npm install firebase angularfire2 --save`.
 
 ## Development server
 
