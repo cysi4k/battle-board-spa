@@ -29,44 +29,45 @@ export class AuthService {
     });
   }
 // Sign in with email/password
-  SignIn(email, password) {
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.ngZone.run(() => {
-          this.router.navigate(['home']);
-        });
-        this.SetUserData(result.user);
-      }).catch((error) => {
-        window.alert(error.message);
+  async signIn(email: string, password: string) {
+    try {
+      const result = await this.afAuth.auth.signInWithEmailAndPassword(email, password);
+      this.ngZone.run(() => {
+        this.router.navigate(['home']);
       });
+      this.setUserData(result.user);
+    }
+    catch (error) {
+      window.alert(error.message);
+    }
   }
 // Sign up with email/password
-  SignUp(email, password) {
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        /* Call the SendVerificaitonMail() function when new user sign
-        up and returns promise */
-        this.SendVerificationMail();
-        this.SetUserData(result.user);
-      }).catch((error) => {
-        window.alert(error.message);
-      });
+  async signUp(email: string, password: string) {
+    try {
+      const result = await this.afAuth.auth.createUserWithEmailAndPassword(email, password);
+      /* Call the SendVerificaitonMail() function when new user sign
+      up and returns promise */
+      this.sendVerificationMail();
+      this.setUserData(result.user);
+    }
+    catch (error) {
+      window.alert(error.message);
+    }
   }
 // Send email verfificaiton when new user sign up
-  SendVerificationMail() {
-    return this.afAuth.auth.currentUser.sendEmailVerification()
-      .then(() => {
-        this.router.navigate(['verify-email-address']);
-      });
+  async sendVerificationMail() {
+    await this.afAuth.auth.currentUser.sendEmailVerification();
+    this.router.navigate(['verify-email-address']);
   }
 // Reset Forggot password
-  ForgotPassword(passwordResetEmail) {
-    return this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail)
-      .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
-      }).catch((error) => {
-        window.alert(error);
-      });
+  async forgotPassword(passwordResetEmail: string) {
+    try {
+      await this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail);
+      window.alert('Password reset email sent, check your inbox.');
+    }
+    catch (error) {
+      window.alert(error);
+    }
   }
 // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
@@ -74,25 +75,26 @@ export class AuthService {
     return (user !== null && user.emailVerified !== false) ? true : false;
   }
 // Sign in with Google
-  GoogleAuth() {
-    return this.AuthLogin(new auth.GoogleAuthProvider());
+  googleAuth() {
+    return this.authLogin(new auth.GoogleAuthProvider());
   }
 // Auth logic to run auth providers
-  AuthLogin(provider) {
-    return this.afAuth.auth.signInWithPopup(provider)
-      .then((result) => {
-        this.ngZone.run(() => {
-          this.router.navigate(['home']);
-        });
-        this.SetUserData(result.user);
-      }).catch((error) => {
-        window.alert(error);
+  async authLogin(provider: any) {
+    try {
+      const result = await this.afAuth.auth.signInWithPopup(provider);
+      this.ngZone.run(() => {
+        this.router.navigate(['home']);
       });
+      this.setUserData(result.user);
+    }
+    catch (error) {
+      window.alert(error);
+    }
   }
   /* Setting up user data when sign in with username/password,
   sign up with username/password and sign in with social auth
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  SetUserData(user) {
+  setUserData(user: User) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     const userData: User = {
       uid: user.uid,
@@ -106,10 +108,9 @@ export class AuthService {
     });
   }
 // Sign out
-  SignOut() {
-    return this.afAuth.auth.signOut().then(() => {
-      localStorage.removeItem('user');
-      this.router.navigate(['home']);
-    });
+  async signOut() {
+    await this.afAuth.auth.signOut();
+    localStorage.removeItem('user');
+    this.router.navigate(['home']);
   }
 }

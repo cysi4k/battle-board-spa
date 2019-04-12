@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  get isLoginPage(): boolean {
-    return this.router.url === '/sign-in';
+  get isHomePage(): boolean {
+    return this.router.url === '/home';
   }
 }

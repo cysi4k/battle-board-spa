@@ -1,16 +1,25 @@
 <h3>Log in to BattleBoard</h3>
-<div class="jumbotron py-5">
-  <div class="mb-2">
+<div class="jumbotron auth-field py-5">
+  <div class="mb-2 w-100">
     <div>Username</div>
-    <input type="text" placeholder="Username" #userName required>
+    <input type="text"
+           placeholder="Username"
+           #userName
+           required>
   </div>
-  <div class="mb-2">
+  <div class="mb-2 w-100">
     <div>Password</div>
-    <input type="password" placeholder="Password" #userPassword required>
-    <div class="text-right"><a routerLink="/forgot-password">Forgot password?</a></div>
+    <input type="password"
+           placeholder="Password"
+           #userPassword
+           required>
+    <div class="text-right">
+      <a routerLink="/forgot-password">Forgot password?</a>
+    </div>
   </div>
-  <button class="btn nav-button mt-3" (click)="authService.SignIn(userName.value, userPassword.value)">
-    Log in
+  <button class="btn custom-button mt-3 w-100"
+          (click)="authService.signIn(userName.value, userPassword.value)">
+          Log in
   </button>
 
   <div class="text-center">Don't have an account?

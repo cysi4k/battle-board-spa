@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'sign-in', component: SignInComponent, canActivate: [SecureInnerPagesGuard] },
   { path: 'register-user', component: SignUpComponent , canActivate: [SecureInnerPagesGuard]},
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  { path: 'home', component: HomeComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent , canActivate: [SecureInnerPagesGuard]},
   { path: 'verify-email-address', component: VerifyEmailComponent, canActivate: [SecureInnerPagesGuard] }];
 

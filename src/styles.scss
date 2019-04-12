@@ -10,11 +10,11 @@ body {
     background-color: $theme-color-medium;
 }
 
-.nav-button {
+.custom-button {
     @include button-shadow;
     border-radius: 25px;
     background-color: $theme-color-special;
-    color: #fff;
+    color: $theme-color-light;
 
     transition: transform 0.1s ease-in-out, box-shadow 0.1 ease-in-out;
 
@@ -36,7 +36,11 @@ body {
 // dynamic content --> router <-- 
 // making sure that dynamic component will take whole remaining space of container
 // (whole screen space - navbar space = dynamic component space)
-app-sign-in, app-home {
+app-sign-in, 
+app-sign-up,
+app-verify-email,
+app-forgot-password, 
+app-home {
     width: 100vw;
     flex-grow: 1;
 
@@ -44,4 +48,47 @@ app-sign-in, app-home {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.auth-field {
+    @include shadow;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $theme-color-dark;
+
+    input {
+        width: 100%;
+        border: 1px solid $theme-color-dark;
+        background-color: $theme-color-light !important;
+        border-radius: 4px;
+        padding: .5em;
+        color: $theme-font-color;
+    }
+
+
+    // chrome autofill sets bgcolor and text color of input so we're overriding it
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus, 
+    input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px $theme-color-light inset !important;
+    -webkit-text-fill-color: $theme-font-color;
+    }
+
+    a {
+        color: $theme-color-medium;
+        text-decoration: none;
+        font-size: .9em;
+    
+        &:hover {
+            color: $theme-color-special;
+        }
+    }
+
+    .custom-button {
+        border-radius: 4px;
+        min-width: 50%;
+    }
 }
