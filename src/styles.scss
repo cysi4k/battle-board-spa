@@ -36,7 +36,7 @@ body {
 // dynamic content --> router <-- 
 // making sure that dynamic component will take whole remaining space of container
 // (whole screen space - navbar space = dynamic component space)
-app-sign-in, app-dashboard {
+app-sign-in, app-home {
     width: 100vw;
     flex-grow: 1;
 
