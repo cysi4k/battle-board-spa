@@ -1,4 +1,5 @@
 # BattleBoard
+BattleBoard is an application for board game players. It allows you to create your own player account, find tournaments of favourite board games in the area, create your own tournaments and is an opportunity to meet new people!
 
 ## UML Use Case Diagram
 ![UML Use Case Diagram](../master/56795673_273610530195983_2529208044777111552_n.png)
