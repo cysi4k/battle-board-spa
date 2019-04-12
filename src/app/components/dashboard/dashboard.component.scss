@@ -1,0 +1,15 @@
+@import '~src/sass/variables.scss';
+@import '~src/sass/mixins.scss';
+
+.jumbotron {
+    @include shadow-light;
+    background-color: $theme-color-dark;
+}
+
+.promo-container {
+    display: flex;
+
+    .screenshots {
+        max-width: 40%;
+    }
+}

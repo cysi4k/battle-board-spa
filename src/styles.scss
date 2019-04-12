@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~src/sass/variables.scss';
+@import '~src/sass/mixins.scss';
+
+// global styles 
+* {
+    font-family: 'Changa One';
+}
+
+body {
+    background-color: $theme-color-medium;
+}
+
+.nav-button {
+    @include button-shadow;
+    border-radius: 25px;
+    background-color: $theme-color-special;
+    color: #fff;
+
+    transition: transform 0.1s ease-in-out, box-shadow 0.1 ease-in-out;
+
+    &:active {
+        @include button-shadow-active;
+        transform: translateY(.1em);
+    }
+
+    &:hover {
+        color: $theme-font-color !important;
+    }
+
+    // override default .btn class property
+    &:focus {
+        @include button-shadow-active;
+    }
+}
+
+// dynamic content --> router <-- 
+// making sure that dynamic component will take whole remaining space of container
+// (whole screen space - navbar space = dynamic component space)
+app-sign-in, app-dashboard {
+    width: 100vw;
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

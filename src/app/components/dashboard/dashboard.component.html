@@ -1,28 +1,38 @@
-<!-- Top navigation -->
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/register-student">
-    <span class="dasboard-text">Dashboard</span>
-  </a>
-</nav>
-<!-- Sidebar navigation -->
-<div class="container-fluid">
-  <div class="row">
-    <nav class="col-md-2 d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active">
-              <i class="fas fa-user"></i>User Profile
-            </a>
-          </li>
-          <!-- Calling SignOut() Api from AuthService -->
-          <li class="nav-item">
-            <a class="nav-link" (click)="authService.SignOut()">
-              <i class="fas fa-sign-out-alt"></i>Log out
-            </a>
-          </li>
-        </ul>
+<div class="jumbotron m-5 py-0 px-5 d-flex">
+  <div class="w-50 py-3">
+    <div class="d-flex">
+      <img class="mr-2" width="60" height="60" src="../../../assets/logo.png" alt="BattleBoard Logo" /> 
+      <span>
+      <h2 class="mb-0">BattleBoard</h2>
+      <div>
+        <span>Create</span>
+        <span class="mx-2">Challenge</span>
+        <span>Win</span>
       </div>
-    </nav>
+    </span>
+    </div>
+  </div>
+  <div class="w-50 py-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras purus dui, lobortis ac nisl nec, finibus ornare ex. Cras vel tellus ipsum. Quisque felis urna, maximus elementum laoreet at, iaculis sit amet eros. Phasellus rhoncus tempus purus lobortis pretium. Proin vestibulum eget magna eu tincidunt. Donec aliquet hendrerit quam mollis.</div>
+</div>
+
+<div class="promo-container m-5">
+  <div class="flex-grow-1"></div>
+  <div class="features mr-4">
+    <h3>Features</h3>
+    <ul>
+      <li>crate your account</li>
+      <li>create tournaments</li>
+      <li>choose format</li>
+      <li>create your own format</li>
+      <li>manage tournaments online</li>
+      <li>invite players</li>
+      <li>choose game</li>
+    </ul>
+  </div>
+  <div class="screenshots">
+    <h3>Screenshots</h3>
+    <div>
+      <img class="mr-3 mb-3" width="100" height="100" src="../../../assets/BB_Logo.png" *ngFor="let img of [1, 2, 3, 4, 5, 6]" />
+    </div>
   </div>
 </div>

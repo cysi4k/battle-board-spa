@@ -1,0 +1,42 @@
+@import '~src/sass/variables.scss';
+@import '~src/sass/mixins.scss';
+   
+.jumbotron {
+    @include shadow;
+    display: flex;
+    flex-direction: column;
+    background-color: $theme-color-dark;
+
+    input {
+        width: 100%;
+        border: 1px solid $theme-color-dark;
+        background-color: $theme-color-light !important;
+        border-radius: 4px;
+        padding: .5em;   
+    }
+
+
+    // chrome autofill sets bgcolor and text color of input so we're overriding it
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus, 
+    input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px $theme-color-light inset !important;
+    -webkit-text-fill-color: $theme-font-color;
+    }
+}
+
+a {
+    color: $theme-color-medium;
+    text-decoration: none;
+    font-size: .9em;
+
+    &:hover {
+        color: #c60000;
+    }
+}
+
+.nav-button {
+    color: $theme-color-light;
+    border-radius: 4px;
+}

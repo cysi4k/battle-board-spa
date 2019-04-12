@@ -1,0 +1,27 @@
+<nav class="navbar navbar-light">
+  <a href="#">
+    <img width="60" height="60" src="../../../assets/logo.png" alt="BattleBoard Logo" /> 
+  </a>
+
+  <div class="flex-grow-1"></div>
+  
+  <div *ngIf="!isLoginPage">
+    <button class="btn btn-lg nav-button px-4">Create Tournament</button>
+    <button class="btn btn-lg nav-button px-4 mx-2">Your Tournaments</button>
+    <button class="btn btn-lg nav-button px-4">Find a Game</button>
+  </div>
+  
+  <div class="flex-grow-1"></div>
+
+  <button *ngIf="authService.isLoggedIn"
+          class="btn btn-lg nav-button px-4"
+          (click)="authService.SignOut()">
+          Log out
+  </button>
+
+  <button *ngIf="!authService.isLoggedIn && !isLoginPage"
+          class="btn btn-lg nav-button px-4"
+          routerLink="/sign-in">
+          Log in
+  </button>
+</nav>
