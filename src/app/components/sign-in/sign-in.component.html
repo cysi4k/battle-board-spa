@@ -21,7 +21,10 @@
           (click)="authService.signIn(userName.value, userPassword.value)">
           Log in
   </button>
-
+    <button class="btn custom-button mt-3 w-100" (click)="authService.googleAuth()" >
+        <img width="20px" alt="Google &quot;G&quot; Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
+      Login with Google
+    </button>
   <div class="text-center">Don't have an account?
     <a routerLink="/register-user">Sign up</a>
   </div>
