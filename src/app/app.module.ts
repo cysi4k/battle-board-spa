@@ -16,7 +16,9 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { AuthService } from './auth.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
-
+import { ChooseGameComponent } from './components/choose-game/choose-game.component';
+import { HttpClientModule} from '@angular/common/http';
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    NavbarComponent
+    NavbarComponent,
+    ChooseGameComponent
   ],
   imports: [
     BrowserModule,
@@ -34,8 +37,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

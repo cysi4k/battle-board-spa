@@ -7,6 +7,7 @@ import { SignUpComponent } from '../../app/components/sign-up/sign-up.component'
 import { HomeComponent } from '../../app/components/home/home.component';
 import { ForgotPasswordComponent } from '../../app/components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from '../../app/components/verify-email/verify-email.component';
+import { ChooseGameComponent } from '../../app/components/choose-game/choose-game.component';
 // Import canActivate guard services
 import { AuthGuard } from '../../app/auth.guard';
 import { SecureInnerPagesGuard } from '../../app/shared/guard/secure-inner-pages.guard';
@@ -17,7 +18,9 @@ const routes: Routes = [
   { path: 'register-user', component: SignUpComponent , canActivate: [SecureInnerPagesGuard]},
   { path: 'home', component: HomeComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent , canActivate: [SecureInnerPagesGuard]},
-  { path: 'verify-email-address', component: VerifyEmailComponent, canActivate: [SecureInnerPagesGuard] }];
+  { path: 'verify-email-address', component: VerifyEmailComponent, canActivate: [SecureInnerPagesGuard] },
+  { path: 'choose-game', component: ChooseGameComponent, canActivate: [AuthGuard] }];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
