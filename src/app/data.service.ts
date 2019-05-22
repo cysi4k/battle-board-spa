@@ -8,11 +8,17 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-  apiUrl = 'https://www.boardgameatlas.com/api/search?client_id=19MjTO641U';
+  apiUrl = 'https://www.boardgameatlas.com/api/';
+  search = 'search?';
+  token = 'client_id=19MjTO641U';
   data: any;
   constructor(private http: HttpClient) { }
 
   getGames(): Observable<Game[]> {
-     return this.http.get<Game[]>(this.apiUrl).pipe(map(res => res['games']));
+     return this.http.get<Game[]>(this.apiUrl + this.search + this.token).pipe(map(res => res['games']));
+  }
+
+  getGame(id): Observable<Game[]> {
+    return this.http.get<Game[]>(this.apiUrl + this.search + 'ids=' + id + '&' + this.token).pipe(map(res => res['games']));
   }
 }

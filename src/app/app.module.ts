@@ -21,6 +21,8 @@ import { ChooseGameComponent } from './components/choose-game/choose-game.compon
 import { HttpClientModule} from '@angular/common/http';
 import { DataService } from './data.service';
 import { CreateTournamentComponent } from './components/create-tournament/create-tournament.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -41,9 +43,13 @@ import { CreateTournamentComponent } from './components/create-tournament/create
     AngularFireAuthModule,
     AngularFirestoreModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule
   ],
-  providers: [AuthService, DataService],
+  providers: [
+    AuthService,
+    DataService
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

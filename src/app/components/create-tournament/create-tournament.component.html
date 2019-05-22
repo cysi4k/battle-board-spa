@@ -1,3 +1,40 @@
-<p>
-  create-tournament works!
-</p>
+<table class="table table-hover table-bordered">
+  <tbody>
+  <tr class="table">
+    <td class="tdHead">Photo</td>
+    <td class="tdHead">Name</td>
+    <td class="tdHead">Description</td>
+    <td class="tdHead">Player number</td>
+    <td class="tdHead">Playtime</td>
+  </tr>
+  <tr *ngFor="let game of games">
+    <td><img src="{{game.image_url}}"  height="100" width="100"></td>
+    <td>{{game.name}}</td>
+    <td>{{game.description_preview}}</td>
+    <td>Minimal players: {{game.min_players}} <br> Maximal players: {{game.max_players}}</td>
+    <td>Minimal playtime: {{game.min_playtime}} <br> Maximal playtime: {{game.max_playtime}}</td>
+  </tr>
+  </tbody>
+</table>
+<!-- main app container -->
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h3>Angular 7 Reactive Form Validation</h3>
+        <form [formGroup]="newTournament" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+              <div *ngIf="f.firstName.errors.required">First Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
