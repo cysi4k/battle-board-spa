@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {DataService} from '../../data.service';
-import {Games} from './games.model';
-import {Config} from 'protractor';
-import {Game} from "./game.model";
+import {Game} from './game.model';
 
 @Component({
   selector: 'app-choose-game',
@@ -11,10 +10,18 @@ import {Game} from "./game.model";
 })
 export class ChooseGameComponent implements OnInit {
   games: Game[];
-  constructor(private dataService: DataService) { }
+  page = 1;
+  pageSize = 10;
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
     return this.dataService.getGames().subscribe(data => this.games = data);
+  }
+
+  createTournament(gameId) {
+    console.log(gameId);
+    this.router.navigate(['/create-tournament'] , { queryParams: { gameId: gameId} });
+
   }
 
 }

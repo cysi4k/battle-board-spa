@@ -1,3 +1,24 @@
-<div *ngFor='let game of games' style="text-align: center">
-  <h2>{{game.id}} - {{game.name}}</h2>
-</div>
+<!--<div *ngFor='let game of games' style="text-align: center">-->
+<!--  <h2>{{game.id}} - {{game.name}}</h2>-->
+<!--</div>-->
+<table class="table table-hover table-bordered">
+  <tbody>
+  <tr class="table">
+    <td class="tdHead">Photo</td>
+    <td class="tdHead">Name</td>
+    <td class="tdHead">Description</td>
+    <td class="tdHead">Player number</td>
+    <td class="tdHead">Playtime</td>
+    <td class="tdHead"></td>
+  </tr>
+  <tr *ngFor="let game of games  | paginate: { itemsPerPage: 10, currentPage: page }">
+    <td><img src="{{game.image_url}}"  height="100" width="100"></td>
+    <td>{{game.name}}</td>
+    <td>{{game.description_preview}}</td>
+    <td>Minimal players: {{game.min_players}} <br> Maximal players: {{game.max_players}}</td>
+    <td>Minimal playtime: {{game.min_playtime}} <br> Maximal playtime: {{game.max_playtime}}</td>
+    <td><button (click)="createTournament(game.id)" class="btn btn-lg custom-button px-4">Create tournament</button></td>
+  </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="page = $event"></pagination-controls>
