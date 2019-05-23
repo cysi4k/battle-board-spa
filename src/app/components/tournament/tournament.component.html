@@ -19,5 +19,6 @@ Time: {{tournament.roundDuration}} min
 </button>
 <button class="btn btn-lg custom-button"
         *ngIf="isFinalRound"
-        (click)="endTournament()">End Tournament
+        (click)="endTournament()"
+        routerLink="../tournament-summary">End Tournament
 </button>

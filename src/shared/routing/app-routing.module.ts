@@ -13,6 +13,7 @@ import { CreateTournamentComponent} from '../../app/components/create-tournament
 import { AuthGuard } from '../../app/auth.guard';
 import { SecureInnerPagesGuard } from '../../app/shared/guard/secure-inner-pages.guard';
 import { TournamentComponent } from 'src/app/components/tournament/tournament.component';
+import { TournamentSummaryComponent } from 'src/app/components/tournament-summary/tournament-summary.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'verify-email-address', component: VerifyEmailComponent, canActivate: [SecureInnerPagesGuard] },
   { path: 'choose-game', component: ChooseGameComponent, canActivate: [AuthGuard] },
   { path: 'create-tournament', component: CreateTournamentComponent, canActivate: [AuthGuard] },
-  { path: 'tournament', component: TournamentComponent, canActivate: [AuthGuard]} ];
+  { path: 'tournament', component: TournamentComponent, canActivate: [AuthGuard]},
+  { path: 'tournament-summary', component: TournamentSummaryComponent, canActivate: [AuthGuard]} ];
 
 
 @NgModule({

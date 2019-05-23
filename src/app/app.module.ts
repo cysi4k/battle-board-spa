@@ -23,6 +23,7 @@ import { DataService } from './data.service';
 import { CreateTournamentComponent } from './components/create-tournament/create-tournament.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TournamentComponent } from './components/tournament/tournament.component';
+import { TournamentSummaryComponent } from './components/tournament-summary/tournament-summary.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { TournamentComponent } from './components/tournament/tournament.componen
     NavbarComponent,
     ChooseGameComponent,
     CreateTournamentComponent,
-    TournamentComponent
+    TournamentComponent,
+    TournamentSummaryComponent
   ],
   imports: [
     BrowserModule,
