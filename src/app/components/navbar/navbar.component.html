@@ -6,7 +6,7 @@
   <div class="flex-grow-1"></div>
   
   <div *ngIf="authService.isLoggedIn">
-    <button class="btn btn-lg custom-button px-4" routerLink="create-tournament">Create Tournament</button>
+    <button class="btn btn-lg custom-button px-4" routerLink="create-tournament">Create Tournament</button> <!-- Chcemy tu ten przycisk? przekieruje do create tournament bez wybranej gry więc i tak trzeba otworzyć liste gier-->
     <button class="btn btn-lg custom-button px-4 mx-2" routerLink="tournament">Your Tournaments</button>
     <button class="btn btn-lg custom-button px-4" routerLink="choose-game">Find a Game</button>
   </div>

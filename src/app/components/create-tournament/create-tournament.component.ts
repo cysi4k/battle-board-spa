@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Game } from '../choose-game/game.model';
 import { DataService } from '../../data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
 
 @Component({
