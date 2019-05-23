@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Game } from '../choose-game/game.model';
 import { DataService } from '../../data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
+
 
 @Component({
   selector: 'app-create-tournament',
@@ -15,7 +17,13 @@ export class CreateTournamentComponent implements OnInit {
   gameId: number;
   // wybrana gra jest pod indexem 0
   games: Game[];
-  constructor(private activeRouter: ActivatedRoute, private dataService: DataService, private formBuilder: FormBuilder) { }
+  numbers: number[];
+  showNameplates:boolean[];
+  
+  constructor(private activeRouter: ActivatedRoute, private dataService: DataService, private formBuilder: FormBuilder) { 
+    this.numbers = [0,1,2,3];
+    
+  }
 
   ngOnInit() {
       this.newTournament = this.formBuilder.group({
@@ -24,6 +32,7 @@ export class CreateTournamentComponent implements OnInit {
       this.activeRouter.queryParams.subscribe(params => {
       this.gameId = params["gameId"];
       });
+      
       return this.dataService.getGame(this.gameId).subscribe(data => this.games = data);
   }
 
@@ -39,5 +48,12 @@ export class CreateTournamentComponent implements OnInit {
     }
 
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.newTournament.value));
+  }
+  onPlayersSpecified(playerNumber:number) {
+    // Append html to choose player names
+    for(let i = 0; i<=playerNumber; i++){
+      this.showNameplates[i] = true;
+    }
+    console.log(playerNumber);
   }
 }
