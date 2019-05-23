@@ -1,0 +1,23 @@
+<h1 class="mb-0">{{tournament.name}}</h1>
+<hr>
+<h3>Round number <strong class="ml-1">{{tournament.activeRound}}</strong></h3>
+<h3>Teams</h3>
+<div class="d-flex align-items-center">
+  <div class="d-flex mb-3" *ngFor="let team of tournament.teams, let index = index">
+    <div class="jumbotron jumbo-field py-4 m-0">
+      Team {{ index +1 }}
+      <li *ngFor="let player of team">{{player}}</li>
+    </div>
+  <span *ngIf="index+1 !== tournament.teams.length" class="d-flex align-items-center mx-2">vs</span>
+  </div>
+</div>
+Time: {{tournament.roundDuration}} min
+<hr>
+<button class="btn btn-lg custom-button"
+        *ngIf="!isFinalRound"
+        (click)="endRound()">End Round
+</button>
+<button class="btn btn-lg custom-button"
+        *ngIf="isFinalRound"
+        (click)="endTournament()">End Tournament
+</button>

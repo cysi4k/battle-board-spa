@@ -22,6 +22,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { DataService } from './data.service';
 import { CreateTournamentComponent } from './components/create-tournament/create-tournament.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TournamentComponent } from './components/tournament/tournament.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     VerifyEmailComponent,
     NavbarComponent,
     ChooseGameComponent,
-    CreateTournamentComponent
+    CreateTournamentComponent,
+    TournamentComponent
   ],
   imports: [
     BrowserModule,

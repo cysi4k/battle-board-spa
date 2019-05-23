@@ -5,9 +5,9 @@
 
   <div class="flex-grow-1"></div>
   
-  <div *ngIf="isHomePage">
-    <button class="btn btn-lg custom-button px-4">Create Tournament</button>
-    <button class="btn btn-lg custom-button px-4 mx-2">Your Tournaments</button>
+  <div *ngIf="authService.isLoggedIn">
+    <button class="btn btn-lg custom-button px-4" routerLink="create-tournament">Create Tournament</button>
+    <button class="btn btn-lg custom-button px-4 mx-2" routerLink="tournament">Your Tournaments</button>
     <button class="btn btn-lg custom-button px-4" routerLink="choose-game">Find a Game</button>
   </div>
   
