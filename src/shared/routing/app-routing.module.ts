@@ -9,6 +9,7 @@ import { ForgotPasswordComponent } from '../../app/components/forgot-password/fo
 import { VerifyEmailComponent } from '../../app/components/verify-email/verify-email.component';
 import { ChooseGameComponent } from '../../app/components/choose-game/choose-game.component';
 import { CreateTournamentComponent} from '../../app/components/create-tournament/create-tournament.component';
+import { RankingComponent} from '../../app/components/ranking/ranking.component';
 // Import canActivate guard services
 import { AuthGuard } from '../../app/auth.guard';
 import { SecureInnerPagesGuard } from '../../app/shared/guard/secure-inner-pages.guard';
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent , canActivate: [SecureInnerPagesGuard]},
   { path: 'verify-email-address', component: VerifyEmailComponent, canActivate: [SecureInnerPagesGuard] },
   { path: 'choose-game', component: ChooseGameComponent, canActivate: [AuthGuard] },
-  { path: 'create-tournament', component: CreateTournamentComponent, canActivate: [AuthGuard] }];
+  { path: 'create-tournament', component: CreateTournamentComponent, canActivate: [AuthGuard] },
+  { path: 'ranking', component: RankingComponent, canActivate: [AuthGuard] }];
 
 
 @NgModule({

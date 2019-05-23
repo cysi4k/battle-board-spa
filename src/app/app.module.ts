@@ -21,6 +21,7 @@ import { ChooseGameComponent } from './components/choose-game/choose-game.compon
 import { HttpClientModule} from '@angular/common/http';
 import { DataService } from './data.service';
 import { CreateTournamentComponent } from './components/create-tournament/create-tournament.component';
+import { RankingComponent } from './components/ranking/ranking.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CreateTournamentComponent } from './components/create-tournament/create
     VerifyEmailComponent,
     NavbarComponent,
     ChooseGameComponent,
-    CreateTournamentComponent
+    CreateTournamentComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,
