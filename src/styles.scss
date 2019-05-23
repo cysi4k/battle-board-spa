@@ -40,7 +40,8 @@ app-sign-in,
 app-sign-up,
 app-verify-email,
 app-forgot-password, 
-app-home {
+app-home,
+app-user-profile {
     width: 100vw;
     flex-grow: 1;
 
@@ -50,7 +51,7 @@ app-home {
     justify-content: center;
 }
 
-.auth-field {
+.jumbo-field {
     @include shadow;
     display: flex;
     flex-direction: column;

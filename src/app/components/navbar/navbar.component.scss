@@ -4,4 +4,10 @@
 nav {
     @include shadow;
     background-color: $theme-color-special;
+
+    .user {
+        border-radius: 50%;
+        width: 35px;
+        filter: invert(95%);
+    }
 }
