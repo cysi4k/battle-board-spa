@@ -25,7 +25,6 @@ const routes: Routes = [
   { path: 'create-tournament', component: CreateTournamentComponent, canActivate: [AuthGuard] },
   { path: 'tournament', component: TournamentComponent, canActivate: [AuthGuard]} ];
 
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

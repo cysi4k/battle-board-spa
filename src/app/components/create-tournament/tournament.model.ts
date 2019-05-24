@@ -6,4 +6,7 @@ export class Tournament {
   userId: string;
   choosingTeamType: string;
   gameId: string;
+  teams: string[][];
+  assignedUsers: string[];
+  tournamentTime: number;
 }

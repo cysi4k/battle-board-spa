@@ -18,9 +18,7 @@ export class ChooseGameComponent implements OnInit {
   }
 
   createTournament(gameId) {
-    console.log(gameId);
     this.router.navigate(['/create-tournament'] , { queryParams: { gameId: gameId} });
-
   }
 
 }

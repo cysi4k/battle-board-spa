@@ -12,8 +12,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class DataService {
   tournaments: Tournament[];
   firebase = 'https://firestore.googleapis.com/v1beta1/projects/battleboard-1cfb2/databases/(default)/documents/';
-  // pomiedzy tymi dwoma trzeba dodac wybrany dokument
-  putDocument = ':importDocuments'
   apiUrl = 'https://www.boardgameatlas.com/api/';
   search = 'search?';
   token = 'client_id=19MjTO641U';
@@ -32,11 +30,27 @@ export class DataService {
   getGame(id): Observable<Game[]> {
     return this.http.get<Game[]>(this.apiUrl + this.search + 'ids=' + id + '&' + this.token).pipe(map(res => res['games']));
   }
-  setTournaments(tournament) {
-    this.data = '{"fields": {"choosingTeamType": \"Random\","userId": \"00uDGCSZnlfSVR0dpMaayEQkDbs1\","gameId": \"kPDxpJZ8PD\","name": \"Przykładowy turniej numer 11\","teamSize": 2,"numberOfRounds": 5,"playersNumber": 4}}';
+  setBasicTournamentData(tournament) {
+    return new Promise<any>((resolve, reject) => {this.firestore.collection('basicTournamentsData').add(tournament).then(res => {}, err => reject(err)); });
+  }
+  getBasicTournamentsData() {
+    return this.http.get<Tournament[]>(this.firebase + 'basicTournamentsData').pipe(map(res => res['fields']));
+    // return this.firestore.collection('tournaments').snapshotChanges();
+  }
+
+  getBasicTournamentData(tournamentName) {
+    return this.firestore.collection('basicTournamentsData').ref.where('name','==' , tournamentName).get();
+  }
+
+  setTournament(tournament) {
     return new Promise<any>((resolve, reject) => {this.firestore.collection('tournaments').add(tournament).then(res => {}, err => reject(err)); });
   }
+  getTournaments() {
+    return this.http.get<Tournament[]>(this.firebase + 'tournaments').pipe(map(res => res['fields']));
+    // return this.firestore.collection('tournaments').snapshotChanges();
+  }
+
+  getTournament(tournamentName) {
+    return this.firestore.collection('tournaments').ref.where('name','==' , tournamentName).get();
+  }
 }
-// console.log('bleee')
-// this.http.post('https://firestore.googleapis.com/v1beta1/projects/battleboard-1cfb2/databases/(default)/documents/tournaments/commit',
-//   '{"fields": {"choosingTeamType": \"Random\","userId": \"00uDGCSZnlfSVR0dpMaayEQkDbs1\","gameId": \"kPDxpJZ8PD\","name": \"Przykładowy turniej numer 11\","teamSize": 2,"numberOfRounds": 5,"playersNumber": 4}}').subscribe(response => {});

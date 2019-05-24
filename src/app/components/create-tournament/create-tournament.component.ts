@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Game } from '../choose-game/game.model';
 import { DataService } from '../../data.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Tournament} from './tournament.model';
 
 
@@ -17,7 +16,7 @@ export class CreateTournamentComponent implements OnInit {
   tournamentName: string = '';
   // wybrana gra jest pod indexem 0
   games: Game[];
-  constructor(private activeRouter: ActivatedRoute, private dataService: DataService, private formBuilder: FormBuilder) {
+  constructor(private activeRouter: ActivatedRoute, private dataService: DataService, private router: Router) {
    this.tournament = {
     name: '',
     teamSize: 0,
@@ -25,8 +24,11 @@ export class CreateTournamentComponent implements OnInit {
     numberOfRounds: 0,
     userId: '',
     choosingTeamType: '',
-    gameId: ''
-   };
+    teams: [],
+    gameId: '',
+    assignedUsers: [],
+    tournamentTime: 0
+  };
   }
 
   ngOnInit() {
@@ -41,7 +43,8 @@ export class CreateTournamentComponent implements OnInit {
     this.setGameIdToTournament();
     this.setUserIdToTournament();
     this.tournament.name = this.tournamentName;
-    this.dataService.setTournaments(this.tournament);
+    this.dataService.setBasicTournamentData(this.tournament);
+    this.router.navigate(['/tournament'] , { queryParams: { tournamentName: this.tournament.name} });
   }
 
   fillArrayWithNumbers(a, b): number[] {
@@ -73,7 +76,6 @@ export class CreateTournamentComponent implements OnInit {
   }
 
   setUserIdToTournament() {
-    console.log(JSON.parse(localStorage.getItem('user')));
     this.tournament.userId = JSON.parse(localStorage.getItem('user')).uid;
   }
 }
