@@ -17,73 +17,45 @@
   </tbody>
 </table>
 <!-- main app container -->
-<div class="jumbotron">
+<div>
   <div class="container">
     <div class="row">
       <div class="col-md-8 offset-md-2">
-        <h3>New {{games[0].name}} tournament</h3>
-        <form [formGroup]="newTournament" (ngSubmit)="onSubmit()">
+        <h3>Create {{games[0].name}} tournament</h3>
           <div class="form-group">
-            <label>Tournament Name</label>
-            <input type="text" formControlName="tournamentName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tournamentName.errors }" />
-            <div *ngIf="submitted && f.tournamentName.errors" class="invalid-feedback">
-              <div *ngIf="f.tournamentName.errors.required">Tournament Name is required</div>
-            </div>
+            <label>Name your tournament:</label>
+            <input type="text" [(ngModel)]="tournamentName" class="form-control" />
             <div class="form-inputs">
             <!-- dropdown: ilosc graczy -->
-            <div class="dropdown">
-              <button class="dropbtn">Number of players</button>
-              <div class="dropdown-content">
-                <div *ngFor="let number of numbers">
-                  <li (click)="onPlayersSpecified(games[0].min_players + number)">{{ games[0].min_players + number}}</li>
-                </div>
-              </div>
-            </div>
+             <div class="box">
+               <select (change)="setPlayersNumber($event)">
+                 <option *ngFor="let number of fillArrayWithNumbers(games[0].min_players, games[0].max_players)" value="{{number}}">{{number}} players</option>
+               </select>
+             </div>
             <!-- dropdown: losowe druzyny -->
-            <div class="dropdown">
-                <button class="dropbtn">Teams</button>
-                <div class="dropdown-content">
-                  <li>Random</li>
-                  <li>Picked</li>
-                </div>
-              </div>
-            <!-- dropdown: losowe druzyny -->
-            <div class="dropdown">
-                <button class="dropbtn">Team size</button>
-                <div class="dropdown-content">
-                  <li>2</li>
-                  <li>3</li>
-                  <li>4</li>
-                </div>
+             <div class="box">
+               <select (change)="setTeamsChoosing($event)">
+                 <option value="random">Random</option>
+                 <option value="picked">Picked</option>
+               </select>
+             </div>
+            <!-- dropdown: wielkosc druzyny -->
+              <div class="box box-longbox">
+                <select (change)="setTeamSize($event)" >
+                  <option *ngFor="let number of fillArrayWithNumbers(1,10)" value="{{number}}">{{number}} players in team</option>
+                </select>
               </div>
             <!-- dropdown: ilosc rund -->
-            <div class="dropdown">
-                <button class="dropbtn">Number of rounds</button>
-                <div class="dropdown-content">
-                  <li>1</li>
-                  <li>2</li>
-                  <li>3</li>
-                  <li>4</li>
-                  <li>5</li>
-                </div>
-              </div>
-            <!-- button: rozklad punktów -->
-            <button class="pts-distribution">Points distribution</button>
+            <div class="box">
+              <select (change)="setNumberOfRounds($event)">
+                <option *ngFor="let number of fillArrayWithNumbers(1, 20)" value="{{number}}">{{number}} rounds</option>
+              </select>
+            </div>
           </div>
-          <!-- <div class="players-nameplates">
-            <input *ngIf="showNameplates[0]" type="text" placeholder="Player name" class="player-name">
-            <input *ngIf="showNameplates[1]" type="text" placeholder="Player name" class="player-name">
-            <input *ngIf="showNameplates[2]" type="text" placeholder="Player name" class="player-name">
-            <input *ngIf="showNameplates[3]" type="text" placeholder="Player name" class="player-name">
-            <input *ngIf="showNameplates[4]" type="text" placeholder="Player name" class="player-name">
-            <input *ngIf="showNameplates[5]" type="text" placeholder="Player name" class="player-name">
-          </div> -->
-          
           </div>
           <div class="form-group">
-            <button class="btn btn-submit">Create</button>
+            <button class="btn btn-submit" (click)="onSubmit()" >Create</button>
           </div>
-        </form>
       </div>
     </div>
   </div>
