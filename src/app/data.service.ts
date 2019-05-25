@@ -5,6 +5,7 @@ import { Game } from './components/choose-game/game.model';
 import { Observable } from 'rxjs';
 import { Tournament } from './components/create-tournament/tournament.model';
 import { AngularFirestore } from '@angular/fire/firestore';
+import {User} from "./shared/services/user";
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +28,8 @@ export class DataService {
      return this.http.get<Game[]>(this.apiUrl + this.search + this.token).pipe(map(res => res['games']));
   }
 
-  getGame(id): Observable<Game[]> {
-    return this.http.get<Game[]>(this.apiUrl + this.search + 'ids=' + id + '&' + this.token).pipe(map(res => res['games']));
+  getGame(gameName): Observable<Game[]> {
+    return this.http.get<Game[]>(this.apiUrl + this.search + 'name=' + gameName + '&' + this.token).pipe(map(res => res['games']));
   }
   setBasicTournamentData(tournament) {
     return new Promise<any>((resolve, reject) => {this.firestore.collection('basicTournamentsData').add(tournament).then(res => {}, err => reject(err)); });
@@ -36,6 +37,14 @@ export class DataService {
   getBasicTournamentsData() {
     return this.http.get<Tournament[]>(this.firebase + 'basicTournamentsData').pipe(map(res => res['fields']));
     // return this.firestore.collection('tournaments').snapshotChanges();
+  }
+
+  // getUsers() {
+  //   return this.firestore.collection('users').get();
+  // }
+
+  getUsers() {
+    return this.http.get<User[]>(this.firebase + 'users').pipe(map(res => res['documents']));
   }
 
   getBasicTournamentData(tournamentName) {
@@ -52,5 +61,10 @@ export class DataService {
 
   getTournament(tournamentName) {
     return this.firestore.collection('tournaments').ref.where('name','==' , tournamentName).get();
+  }
+
+  setBasicTournamentDataById(tournament) {
+    const id = this.firestore.createId();
+    return new Promise<any>((resolve, reject) => {this.firestore.collection('basicTournamentsData').add(tournament).then(res => {}, err => reject(err)); console.log(id); });
   }
 }

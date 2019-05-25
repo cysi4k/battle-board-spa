@@ -12,8 +12,8 @@ import {Tournament} from './tournament.model';
 })
 export class CreateTournamentComponent implements OnInit {
   tournament: Tournament;
-  gameId: string;
-  tournamentName: string = '';
+  gameName: string;
+  tournamentName = '';
   // wybrana gra jest pod indexem 0
   games: Game[];
   constructor(private activeRouter: ActivatedRoute, private dataService: DataService, private router: Router) {
@@ -25,7 +25,7 @@ export class CreateTournamentComponent implements OnInit {
     userId: '',
     choosingTeamType: '',
     teams: [],
-    gameId: '',
+    gameName: '',
     assignedUsers: [],
     tournamentTime: 0
   };
@@ -33,14 +33,14 @@ export class CreateTournamentComponent implements OnInit {
 
   ngOnInit() {
       this.activeRouter.queryParams.subscribe(params => {
-      this.gameId = params["gameId"];
+      this.gameName = params["gameName"];
       });
-      return this.dataService.getGame(this.gameId).subscribe(data => this.games = data);
+      return this.dataService.getGame(this.gameName).subscribe(data => this.games = data);
   }
 
   onSubmit() {
     console.log();
-    this.setGameIdToTournament();
+    this.setGameNameToTournament();
     this.setUserIdToTournament();
     this.tournament.name = this.tournamentName;
     this.dataService.setBasicTournamentData(this.tournament);
@@ -71,8 +71,8 @@ export class CreateTournamentComponent implements OnInit {
     this.tournament.numberOfRounds = event.target.value;
   }
 
-  setGameIdToTournament() {
-    this.tournament.gameId = this.gameId;
+  setGameNameToTournament() {
+    this.tournament.gameName = this.gameName;
   }
 
   setUserIdToTournament() {

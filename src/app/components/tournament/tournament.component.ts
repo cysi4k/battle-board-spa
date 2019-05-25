@@ -2,6 +2,8 @@ import {Component, OnInit, AfterViewInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DataService} from '../../data.service';
 import {Tournament} from '../create-tournament/tournament.model';
+import {Team} from './Team.model';
+import {User} from '../../shared/services/user';
 
 
 @Component({
@@ -14,9 +16,11 @@ export class TournamentComponent implements OnInit , AfterViewInit {
   actualRound = 1;
   tournamentName: string;
   teamsNumber = 0;
-  interval;
   isLastRound: boolean;
-
+  interval;
+  team: Team[];
+  users: User[];
+  usersData: [];
 
   constructor(private activeRouter: ActivatedRoute, private dataService: DataService, private router: Router) {
     this.tournament = {
@@ -26,7 +30,7 @@ export class TournamentComponent implements OnInit , AfterViewInit {
       numberOfRounds: 0,
       userId: '',
       choosingTeamType: '',
-      gameId: '',
+      gameName: '',
       assignedUsers: [],
       teams: [],
       tournamentTime: 0
@@ -44,10 +48,13 @@ export class TournamentComponent implements OnInit , AfterViewInit {
       this.tournamentName = params['tournamentName'];
     });
     this.dataService.getBasicTournamentData(this.tournamentName).then(querySnapshot => {
-      querySnapshot.forEach(doc => {this.tournament = doc.data() as Tournament;});
+      querySnapshot.forEach(doc => {this.tournament = doc.data() as Tournament; });
     });
-  }
+    // getUsers
+    this.dataService.getUsers().subscribe(data => this.usersData = data);
 
+    // objects.forEach(data => this.users = data['fields']);
+  }
   ngAfterViewInit() {
     setTimeout( () => {
         this.randomizeTeams();
@@ -67,14 +74,20 @@ export class TournamentComponent implements OnInit , AfterViewInit {
     this.tournament.teams = [];
 
     let n = 0;
+    this.team = [];
     for (let i = 0; i < this.teamsNumber ; i++) {
-      this.tournament.teams[i] = [];
+      this.team[i] = new Team();
+      this.team[i].people = [];
       for (let j = 0; j < this.tournament.teamSize ; j++) {
         if (j < this.tournament.assignedUsers.length) {
-          this.tournament.teams[i][j] = this.tournament.assignedUsers[n];
+          this.team[i].people[j] = this.tournament.assignedUsers[n];
           n++;
         }
         }
+      console.log(this.team);
+      const teams = this.team.map((obj) => { return Object.assign({}, obj); } );
+
+      this.tournament.teams = teams;
     }
   }
   shuffleUsersArray(array): string[]{
@@ -84,6 +97,10 @@ export class TournamentComponent implements OnInit , AfterViewInit {
 
   // buttons methods
   endRound() {
+    console.log(this.usersData);
+    this.usersData.forEach( data => this.users = data.fields);
+    console.log(this.users);
+
     console.log(this.tournament);
     console.log(this.isLastRound);
 
