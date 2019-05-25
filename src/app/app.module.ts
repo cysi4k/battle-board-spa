@@ -26,6 +26,7 @@ import { YourTournamentsComponent } from './components/your-tournaments/your-tou
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TournamentComponent } from './components/tournament/tournament.component';
+import { TournamentSummaryComponent } from './components/tournament-summary/tournament-summary.component';
 
 
 @NgModule({
@@ -39,9 +40,10 @@ import { TournamentComponent } from './components/tournament/tournament.componen
     NavbarComponent,
     ChooseGameComponent,
     CreateTournamentComponent,
+    TournamentComponent,
+    TournamentSummaryComponent,
     YourTournamentsComponent,
-    UserProfileComponent,
-    TournamentComponent
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

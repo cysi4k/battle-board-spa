@@ -12,6 +12,7 @@ import { CreateTournamentComponent} from '../../app/components/create-tournament
 import { YourTournamentsComponent } from '../../app/components/your-tournaments/your-tournaments.component';
 import { UserProfileComponent } from 'src/app/components/user-profile/user-profile.component';
 import { TournamentComponent } from 'src/app/components/tournament/tournament.component';
+import { TournamentSummaryComponent } from 'src/app/components/tournament-summary/tournament-summary.component';
 // Import canActivate guard services
 import { AuthGuard } from '../../app/auth.guard';
 import { SecureInnerPagesGuard } from '../../app/shared/guard/secure-inner-pages.guard';
@@ -19,15 +20,17 @@ import { SecureInnerPagesGuard } from '../../app/shared/guard/secure-inner-pages
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'sign-in', component: SignInComponent, canActivate: [SecureInnerPagesGuard] },
-  { path: 'register-user', component: SignUpComponent , canActivate: [SecureInnerPagesGuard]},
+  { path: 'register-user', component: SignUpComponent , canActivate: [SecureInnerPagesGuard] },
   { path: 'home', component: HomeComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent , canActivate: [SecureInnerPagesGuard]},
+  { path: 'forgot-password', component: ForgotPasswordComponent , canActivate: [SecureInnerPagesGuard] },
   { path: 'verify-email-address', component: VerifyEmailComponent, canActivate: [SecureInnerPagesGuard] },
   { path: 'choose-game', component: ChooseGameComponent, canActivate: [AuthGuard] },
   { path: 'create-tournament', component: CreateTournamentComponent, canActivate: [AuthGuard] },
+  { path: 'tournament', component: TournamentComponent, canActivate: [AuthGuard] },
+  { path: 'tournament-summary', component: TournamentSummaryComponent, canActivate: [AuthGuard] },
   { path: 'your-tournaments', component: YourTournamentsComponent, canActivate: [AuthGuard] },
-  { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] },
-  { path: 'tournament', component: TournamentComponent, canActivate: [AuthGuard]} ];
+  { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] } 
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
