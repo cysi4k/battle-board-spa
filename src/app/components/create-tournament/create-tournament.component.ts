@@ -39,7 +39,6 @@ export class CreateTournamentComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log();
     this.setGameNameToTournament();
     this.setUserIdToTournament();
     this.tournament.name = this.tournamentName;

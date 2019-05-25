@@ -5,7 +5,6 @@ import { Game } from './components/choose-game/game.model';
 import { Observable } from 'rxjs';
 import { Tournament } from './components/create-tournament/tournament.model';
 import { AngularFirestore } from '@angular/fire/firestore';
-import {User} from "./shared/services/user";
 
 @Injectable({
   providedIn: 'root'
@@ -39,13 +38,17 @@ export class DataService {
     // return this.firestore.collection('tournaments').snapshotChanges();
   }
 
-  // getUsers() {
-  //   return this.firestore.collection('users').get();
-  // }
-
+// SPOSÓB WYWOŁANIA GET USERS
+//   this.dataService.getUsers().then(querySnapshot => {
+//   querySnapshot.forEach(doc => {this.users.push(doc.data() as User); });
+// });
   getUsers() {
-    return this.http.get<User[]>(this.firebase + 'users').pipe(map(res => res['documents']));
+    return this.firestore.collection('users').ref.get();
   }
+
+  // getUsers() {
+  //   return this.http.get<User[]>(this.firebase + 'users').pipe(map(res => res['documents']));
+  // }
 
   getBasicTournamentData(tournamentName) {
     return this.firestore.collection('basicTournamentsData').ref.where('name','==' , tournamentName).get();
@@ -54,9 +57,12 @@ export class DataService {
   setTournament(tournament) {
     return new Promise<any>((resolve, reject) => {this.firestore.collection('tournaments').add(tournament).then(res => {}, err => reject(err)); });
   }
+//SPOSÓB WYWOŁANIA GET TOURNAMENTS
+//   this.dataService.getTournaments().then(querySnapshot => {
+//   querySnapshot.forEach(doc => {this.tournaments.push(doc.data() as Tournament); });
+// });
   getTournaments() {
-    return this.http.get<Tournament[]>(this.firebase + 'tournaments').pipe(map(res => res['fields']));
-    // return this.firestore.collection('tournaments').snapshotChanges();
+    return this.firestore.collection('tournaments').ref.get();
   }
 
   getTournament(tournamentName) {
@@ -65,6 +71,6 @@ export class DataService {
 
   setBasicTournamentDataById(tournament) {
     const id = this.firestore.createId();
-    return new Promise<any>((resolve, reject) => {this.firestore.collection('basicTournamentsData').add(tournament).then(res => {}, err => reject(err)); console.log(id); });
+    return new Promise<any>((resolve, reject) => {this.firestore.collection('basicTournamentsData').add(tournament).then(res => {}, err => reject(err));});
   }
 }

@@ -3,7 +3,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {DataService} from '../../data.service';
 import {Tournament} from '../create-tournament/tournament.model';
 import {Team} from './Team.model';
-import {User} from '../../shared/services/user';
 
 
 @Component({
@@ -19,8 +18,6 @@ export class TournamentComponent implements OnInit , AfterViewInit {
   isLastRound: boolean;
   interval;
   team: Team[];
-  users: User[];
-  usersData: [];
 
   constructor(private activeRouter: ActivatedRoute, private dataService: DataService, private router: Router) {
     this.tournament = {
@@ -50,10 +47,6 @@ export class TournamentComponent implements OnInit , AfterViewInit {
     this.dataService.getBasicTournamentData(this.tournamentName).then(querySnapshot => {
       querySnapshot.forEach(doc => {this.tournament = doc.data() as Tournament; });
     });
-    // getUsers
-    this.dataService.getUsers().subscribe(data => this.usersData = data);
-
-    // objects.forEach(data => this.users = data['fields']);
   }
   ngAfterViewInit() {
     setTimeout( () => {
@@ -84,7 +77,6 @@ export class TournamentComponent implements OnInit , AfterViewInit {
           n++;
         }
         }
-      console.log(this.team);
       const teams = this.team.map((obj) => { return Object.assign({}, obj); } );
 
       this.tournament.teams = teams;
@@ -97,13 +89,6 @@ export class TournamentComponent implements OnInit , AfterViewInit {
 
   // buttons methods
   endRound() {
-    console.log(this.usersData);
-    this.usersData.forEach( data => this.users = data.fields);
-    console.log(this.users);
-
-    console.log(this.tournament);
-    console.log(this.isLastRound);
-
     this.actualRound++;
     if (this.actualRound === parseInt(this.tournament.numberOfRounds.toString())) {
       this.isLastRound = true;
