@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Game } from '../choose-game/game.model';
 import { DataService } from '../../data.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Tournament} from './tournament.model';
 
 
 @Component({
@@ -11,48 +11,70 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./create-tournament.component.scss']
 })
 export class CreateTournamentComponent implements OnInit {
-  newTournament: FormGroup;
-  submitted = false;
-  gameId: number;
+  tournament: Tournament;
+  gameId: string;
+  tournamentName = '';
   // wybrana gra jest pod indexem 0
   games: Game[];
-  numbers: number[];
-  showNameplates:boolean[];
-  
-  constructor(private activeRouter: ActivatedRoute, private dataService: DataService, private formBuilder: FormBuilder) { 
-    this.numbers = [0,1,2,3];
-    
+  constructor(private activeRouter: ActivatedRoute, private dataService: DataService, private router: Router) {
+   this.tournament = {
+    name: '',
+    teamSize: 0,
+    playersNumber: 0,
+    numberOfRounds: 0,
+    userId: '',
+    choosingTeamType: '',
+    teams: [],
+    gameId: '',
+    assignedUsers: [],
+    tournamentTime: 0
+  };
   }
 
   ngOnInit() {
-      this.newTournament = this.formBuilder.group({
-       firstName: ['', Validators.required]
-      });
       this.activeRouter.queryParams.subscribe(params => {
       this.gameId = params["gameId"];
       });
-      
-      return this.dataService.getGame(this.gameId).subscribe(data => this.games = data);
+      return this.dataService.getGameById(this.gameId).subscribe(data => this.games = data);
   }
-
-  // convenience getter for easy access to form fields
-  get f() { return this.newTournament.controls; }
 
   onSubmit() {
-    this.submitted = true;
-
-    // stop here if form is invalid
-    if (this.newTournament.invalid) {
-      return;
-    }
-
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.newTournament.value));
+    this.setGameNameToTournament();
+    this.setUserIdToTournament();
+    this.tournament.name = this.tournamentName;
+    this.dataService.setBasicTournamentData(this.tournament);
+    this.router.navigate(['/tournament'] , { queryParams: { tournamentName: this.tournament.name} });
   }
-  onPlayersSpecified(playerNumber:number) {
-    // Append html to choose player names
-    for(let i = 0; i<=playerNumber; i++){
-      this.showNameplates[i] = true;
+
+  fillArrayWithNumbers(a, b): number[] {
+    const tab: number[] = [];
+    for (let i = 0 ; i < b + 1 - a ; i++) {
+      tab[i] = a + i;
     }
-    console.log(playerNumber);
+    return tab;
+  }
+
+  setPlayersNumber(event: any) {
+    this.tournament.playersNumber = event.target.value;
+  }
+
+  setTeamsChoosing(event: any) {
+    this.tournament.choosingTeamType = event.target.value;
+  }
+
+  setTeamSize(event: any) {
+    this.tournament.teamSize = event.target.value;
+  }
+
+  setNumberOfRounds(event: any) {
+    this.tournament.numberOfRounds = event.target.value;
+  }
+
+  setGameNameToTournament() {
+    this.tournament.gameId = this.gameId;
+  }
+
+  setUserIdToTournament() {
+    this.tournament.userId = JSON.parse(localStorage.getItem('user')).uid;
   }
 }

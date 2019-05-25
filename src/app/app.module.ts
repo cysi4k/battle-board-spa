@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './components/home/home.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -21,7 +22,9 @@ import { ChooseGameComponent } from './components/choose-game/choose-game.compon
 import { HttpClientModule} from '@angular/common/http';
 import { DataService } from './data.service';
 import { CreateTournamentComponent } from './components/create-tournament/create-tournament.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { YourTournamentsComponent } from './components/your-tournaments/your-tournaments.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TournamentComponent } from './components/tournament/tournament.component';
 import { TournamentSummaryComponent } from './components/tournament-summary/tournament-summary.component';
 
@@ -38,7 +41,9 @@ import { TournamentSummaryComponent } from './components/tournament-summary/tour
     ChooseGameComponent,
     CreateTournamentComponent,
     TournamentComponent,
-    TournamentSummaryComponent
+    TournamentSummaryComponent,
+    YourTournamentsComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -46,9 +51,11 @@ import { TournamentSummaryComponent } from './components/tournament-summary/tour
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireDatabaseModule,
     HttpClientModule,
     NgxPaginationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     AuthService,
