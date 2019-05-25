@@ -2,8 +2,14 @@
   <tbody>
   <tr class="table">
     <td class="tdHead">No</td>
-    <td class="tdHead">Player Name</td>
+    <td class="tdHead">Tournament Name</td>
     <td class="tdHead">Number of points</td>
+  </tr>
+  <tr *ngFor="let tournament of tournaments; let index = index" (click)="openDetails(tournament.name)">
+    <td>{{index + 1}}</td>
+    <td>{{tournament.name}}</td>
+    <td>{{tournament.gameName}}</td>
+    <td>{{returnPointsNumber(tournament.teams)}}</td>
   </tr>
   </tbody>
 </table>

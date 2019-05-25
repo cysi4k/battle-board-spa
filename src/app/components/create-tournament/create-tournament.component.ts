@@ -26,6 +26,7 @@ export class CreateTournamentComponent implements OnInit {
     choosingTeamType: '',
     teams: [],
     gameId: '',
+    gameName: '',
     assignedUsers: [],
     tournamentTime: 0
   };
@@ -39,6 +40,7 @@ export class CreateTournamentComponent implements OnInit {
   }
 
   onSubmit() {
+    this.setGameIdToTournament();
     this.setGameNameToTournament();
     this.setUserIdToTournament();
     this.tournament.name = this.tournamentName;
@@ -71,6 +73,10 @@ export class CreateTournamentComponent implements OnInit {
   }
 
   setGameNameToTournament() {
+    this.tournament.gameName = this.games[0].name;
+  }
+
+  setGameIdToTournament() {
     this.tournament.gameId = this.gameId;
   }
 
