@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './components/home/home.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -22,6 +23,12 @@ import { HttpClientModule} from '@angular/common/http';
 import { DataService } from './data.service';
 import { CreateTournamentComponent } from './components/create-tournament/create-tournament.component';
 import { RankingComponent } from './components/ranking/ranking.component';
+import { YourTournamentsComponent } from './components/your-tournaments/your-tournaments.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TournamentComponent } from './components/tournament/tournament.component';
+import { TournamentSummaryComponent } from './components/tournament-summary/tournament-summary.component';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +41,11 @@ import { RankingComponent } from './components/ranking/ranking.component';
     NavbarComponent,
     ChooseGameComponent,
     CreateTournamentComponent,
-    RankingComponent
+    RankingComponent,
+    TournamentComponent,
+    TournamentSummaryComponent,
+    YourTournamentsComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -42,10 +53,16 @@ import { RankingComponent } from './components/ranking/ranking.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireDatabaseModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [AuthService, DataService],
+  providers: [
+    AuthService,
+    DataService
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
