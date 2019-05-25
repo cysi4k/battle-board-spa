@@ -7,7 +7,7 @@ import { User } from '../../shared/services/user';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-  user: User; // TODO object User
+  user: User;
   constructor() { }
 
   ngOnInit() {
