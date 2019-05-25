@@ -22,6 +22,7 @@ import { ChooseGameComponent } from './components/choose-game/choose-game.compon
 import { HttpClientModule} from '@angular/common/http';
 import { DataService } from './data.service';
 import { CreateTournamentComponent } from './components/create-tournament/create-tournament.component';
+import { RankingComponent } from './components/ranking/ranking.component';
 import { YourTournamentsComponent } from './components/your-tournaments/your-tournaments.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -40,6 +41,7 @@ import { TournamentSummaryComponent } from './components/tournament-summary/tour
     NavbarComponent,
     ChooseGameComponent,
     CreateTournamentComponent,
+    RankingComponent,
     TournamentComponent,
     TournamentSummaryComponent,
     YourTournamentsComponent,
