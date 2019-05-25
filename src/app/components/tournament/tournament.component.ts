@@ -27,7 +27,7 @@ export class TournamentComponent implements OnInit , AfterViewInit {
       numberOfRounds: 0,
       userId: '',
       choosingTeamType: '',
-      gameName: '',
+      gameId: '',
       assignedUsers: [],
       teams: [],
       tournamentTime: 0

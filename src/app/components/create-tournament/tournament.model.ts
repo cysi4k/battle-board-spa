@@ -7,7 +7,7 @@ export class Tournament {
   numberOfRounds: number;
   userId: string;
   choosingTeamType: string;
-  gameName: string;
+  gameId: string;
   teams: Team[];
   assignedUsers: string[];
   tournamentTime: number;

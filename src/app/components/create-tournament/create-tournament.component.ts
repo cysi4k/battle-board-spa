@@ -12,7 +12,7 @@ import {Tournament} from './tournament.model';
 })
 export class CreateTournamentComponent implements OnInit {
   tournament: Tournament;
-  gameName: string;
+  gameId: string;
   tournamentName = '';
   // wybrana gra jest pod indexem 0
   games: Game[];
@@ -25,7 +25,7 @@ export class CreateTournamentComponent implements OnInit {
     userId: '',
     choosingTeamType: '',
     teams: [],
-    gameName: '',
+    gameId: '',
     assignedUsers: [],
     tournamentTime: 0
   };
@@ -33,9 +33,9 @@ export class CreateTournamentComponent implements OnInit {
 
   ngOnInit() {
       this.activeRouter.queryParams.subscribe(params => {
-      this.gameName = params["gameName"];
+      this.gameId = params["gameId"];
       });
-      return this.dataService.getGame(this.gameName).subscribe(data => this.games = data);
+      return this.dataService.getGameById(this.gameId).subscribe(data => this.games = data);
   }
 
   onSubmit() {
@@ -71,7 +71,7 @@ export class CreateTournamentComponent implements OnInit {
   }
 
   setGameNameToTournament() {
-    this.tournament.gameName = this.gameName;
+    this.tournament.gameId = this.gameId;
   }
 
   setUserIdToTournament() {

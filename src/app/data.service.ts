@@ -27,9 +27,14 @@ export class DataService {
      return this.http.get<Game[]>(this.apiUrl + this.search + this.token).pipe(map(res => res['games']));
   }
 
+  getGameById(id): Observable<Game[]> {
+    return this.http.get<Game[]>(this.apiUrl + this.search + 'ids=' + id + '&' + this.token).pipe(map(res => res['games']));
+  }
+
   getGame(gameName): Observable<Game[]> {
     return this.http.get<Game[]>(this.apiUrl + this.search + 'name=' + gameName + '&' + this.token).pipe(map(res => res['games']));
   }
+
   setBasicTournamentData(tournament) {
     return new Promise<any>((resolve, reject) => {this.firestore.collection('basicTournamentsData').add(tournament).then(res => {}, err => reject(err)); });
   }

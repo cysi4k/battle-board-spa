@@ -17,8 +17,8 @@ export class ChooseGameComponent implements OnInit {
     return this.dataService.getGames().subscribe(data => this.games = data);
   }
 
-  createTournament(gameName) {
-    this.router.navigate(['/create-tournament'] , { queryParams: { gameName: gameName} });
+  createTournament(gameId) {
+    this.router.navigate(['/create-tournament'] , { queryParams: { gameId: gameId} });
   }
 
 }
