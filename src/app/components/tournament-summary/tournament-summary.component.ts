@@ -12,7 +12,4 @@ export class TournamentSummaryComponent implements OnInit {
   ngOnInit() {
   }
 
-  closeTournament() {
-    // strzał z turniejem do backendu
-  }
 }
