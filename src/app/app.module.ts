@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './components/home/home.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -22,6 +23,9 @@ import { HttpClientModule} from '@angular/common/http';
 import { DataService } from './data.service';
 import { CreateTournamentComponent } from './components/create-tournament/create-tournament.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { TournamentComponent } from './components/tournament/tournament.component';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +38,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     NavbarComponent,
     ChooseGameComponent,
     CreateTournamentComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    TournamentComponent
   ],
   imports: [
     BrowserModule,
@@ -42,10 +47,16 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireDatabaseModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [AuthService, DataService],
+  providers: [
+    AuthService,
+    DataService
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

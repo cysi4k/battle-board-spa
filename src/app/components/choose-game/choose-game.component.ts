@@ -11,7 +11,6 @@ import {Game} from './game.model';
 export class ChooseGameComponent implements OnInit {
   games: Game[];
   page = 1;
-  pageSize = 10;
   constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
@@ -19,9 +18,7 @@ export class ChooseGameComponent implements OnInit {
   }
 
   createTournament(gameId) {
-    console.log(gameId);
     this.router.navigate(['/create-tournament'] , { queryParams: { gameId: gameId} });
-
   }
 
 }
