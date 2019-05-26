@@ -5,10 +5,11 @@
 <div class="d-flex align-items-center">
   <div class="d-flex mb-3" *ngFor="let team of tournament.teams, let index = index">
     <div class="jumbotron jumbo-field py-4 m-0">
+      <input type="text" (ngModelChange)="print(points[index])" [(ngModel)]="points[index]" class="form-control" />
       Team {{ index +1 }}
       <li *ngFor="let player of team.people">{{player}}</li>
     </div>
-  <span *ngIf="index+1 !== teamsNumber" class="d-flex align-items-center mx-2">vs</span>
+    <span *ngIf="index+1 !== teamsNumber" class="d-flex align-items-center mx-2">vs</span>
   </div>
 </div>
 Time: {{tournament.tournamentTime}} min

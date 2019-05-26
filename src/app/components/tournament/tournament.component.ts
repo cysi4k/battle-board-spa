@@ -18,6 +18,7 @@ export class TournamentComponent implements OnInit , AfterViewInit {
   isLastRound: boolean;
   interval;
   team: Team[];
+  points = [];
 
   constructor(private activeRouter: ActivatedRoute, private dataService: DataService, private router: Router) {
     this.tournament = {
@@ -28,11 +29,11 @@ export class TournamentComponent implements OnInit , AfterViewInit {
       userId: '',
       choosingTeamType: '',
       gameId: '',
+      gameName: '',
       assignedUsers: [],
       teams: [],
       tournamentTime: 0
   };
-
     if (this.actualRound === parseInt(this.tournament.numberOfRounds.toString())) {
       this.isLastRound = true;
     } else {
@@ -89,6 +90,14 @@ export class TournamentComponent implements OnInit , AfterViewInit {
 
   // buttons methods
   endRound() {
+    for (let i = 0; i < this.tournament.teams.length ; i++) {
+      if (typeof this.tournament.teams[i].points === 'undefined' || this.tournament.teams[i].points === null) {
+        this.tournament.teams[i].points = 0;
+      }
+      this.tournament.teams[i].points += parseInt(this.points[i]);
+      this.points[i] = 0;
+    }
+    console.log(this.tournament);
     this.actualRound++;
     if (this.actualRound === parseInt(this.tournament.numberOfRounds.toString())) {
       this.isLastRound = true;
@@ -102,6 +111,11 @@ export class TournamentComponent implements OnInit , AfterViewInit {
     // this.router.navigate(['/tournament'] , { queryParams: { tournamentName: this.tournament.name} });
     // TODO:  go to summary
     alert("Toournament Finished!");
+    this.router.navigate(['/your-tournaments']);
+  }
+
+  print(log){
+    console.log(log);
   }
 
   // timer methods

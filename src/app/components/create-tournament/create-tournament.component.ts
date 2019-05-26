@@ -3,13 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Game } from '../choose-game/game.model';
 import { DataService } from '../../data.service';
 import { Tournament } from './tournament.model';
-
-
 @Component({
   selector: 'app-create-tournament',
   templateUrl: './create-tournament.component.html',
   styleUrls: ['./create-tournament.component.scss']
 })
+
 export class CreateTournamentComponent implements OnInit {
   tournament: Tournament;
   gameId: string;
@@ -30,6 +29,7 @@ export class CreateTournamentComponent implements OnInit {
       choosingTeamType: '',
       teams: [],
       gameId: '',
+      gameName: '',
       assignedUsers: [],
       tournamentTime: 0
     };
@@ -83,6 +83,7 @@ export class CreateTournamentComponent implements OnInit {
   }
 
   onSubmit() {
+    this.setGameIdToTournament();
     this.setGameNameToTournament();
     this.setUserIdToTournament();
     this.setChosenPlayers();
@@ -104,6 +105,10 @@ export class CreateTournamentComponent implements OnInit {
   }
 
   setGameNameToTournament() {
+    this.tournament.gameName = this.games[0].name;
+  }
+
+  setGameIdToTournament() {
     this.tournament.gameId = this.gameId;
   }
 
