@@ -24,6 +24,6 @@ export class YourTournamentsComponent implements OnInit {
   }
 
   openDetails(tournamentId) {
-    this.router.navigate(['/tournament-details'] , { queryParams: { tournamentId: tournamentId} });
+    this.router.navigate(['/tournament-details'] , { queryParams: { tournamentId: tournamentId,  yourTournaments: true} });
   }
 }
