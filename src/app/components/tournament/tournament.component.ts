@@ -55,13 +55,7 @@ export class TournamentComponent implements OnInit {
 
   // buttons methods
   endRound() {
-    for (let i = 0; i < this.tournament.teams.length ; i++) {
-      if (typeof this.tournament.teams[i].points === 'undefined' || this.tournament.teams[i].points === null) {
-        this.tournament.teams[i].points = 0;
-      }
-      this.tournament.teams[i].points += parseInt(this.points[i]);
-      this.points[i] = 0;
-    }
+    this.setPoints();
     this.actualRound++;
     if (this.actualRound === parseInt(this.tournament.numberOfRounds.toString())) {
       this.isLastRound = true;
@@ -69,8 +63,19 @@ export class TournamentComponent implements OnInit {
   }
 
   endTournament() {
+    this.setPoints();
     this.dataService.setTournament(this.tournament);
     this.router.navigate(['/your-tournaments']);
+  }
+
+  setPoints() {
+    for (let i = 0; i < this.tournament.teams.length ; i++) {
+      if (typeof this.tournament.teams[i].points === 'undefined' || this.tournament.teams[i].points === null) {
+        this.tournament.teams[i].points = 0;
+      }
+      this.tournament.teams[i].points += parseInt(this.points[i]);
+      this.points[i] = 0;
+    }
   }
 
   // timer methods
