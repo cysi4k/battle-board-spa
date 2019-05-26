@@ -1,35 +1,30 @@
-<body id="page-top hero-banner">
-<div class="container d-flex align-items-center flex-column">
-  <section class="hero-banner">
-    <div class="container text-center">
-      <!-- Masthead Avatar Image -->
-      <img width="1000" height="600" src="./assets/logo.png">
-      <span class="hero-banner-icon"><i class="flaticon-sing"></i></span>
-      <h1>Create - Challenge - Win</h1>
+<div class="wrapper w-100 h-100">
+  <div class="hero-banner w-100 d-flex flex-column align-items-center justify-content-center">
+    <img src="../../../assets/logo.png">
+    <h1>Create - Challenge - Win</h1>
+  </div>
+  <div class="content d-flex">
+    <div class="w-50 p-5">
+      <h2>News</h2>
+      <table class="table table-hover table-bordered">
+        <tbody>
+        <tr *ngFor="let new of news  | paginate: { itemsPerPage: 10, currentPage: 1}" (click)="new.url">
+          <td><img src="./assets/text-lines.png"  height="50"></td>
+          <td><a href="{{new.url}}">{{new.title}}</a></td>
+        </tr>
+        </tbody>
+      </table>
     </div>
-  </section>
+    <div class="w-50 p-5">
+      <h2>Top games</h2>
+      <table class="table table-hover table-bordered">
+        <tbody>
+        <tr class="games" *ngFor="let game of games" (click)="goToGame(game.id)">
+          <td><img width="60" height="60" src="{{game.image_url}}"></td>
+          <td class="game">{{game.name}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-<section class="section-padding--small bg-gray">
-  <div>
-    News
-    <table class="table table-hover table-bordered">
-      <tbody>
-      <tr *ngFor="let new of news  | paginate: { itemsPerPage: 10, currentPage: 1}" (click)="new.url">
-        <td><img src="./assets/text-lines.png"  height="50"> </td>
-        <td><a href="{{new.url}}">{{new.title}}</a></td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-  <div>
-    Top Games
-    <table class="table table-hover table-bordered">
-      <tbody>
-      <tr *ngFor="let game of games" (click)="goToGame(game.id)">
-        <td><img height="70" width="70" src="{{game.image_url}}"  height="50"> </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-</body>
