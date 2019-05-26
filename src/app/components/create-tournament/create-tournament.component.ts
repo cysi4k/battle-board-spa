@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Game } from '../choose-game/game.model';
 import { DataService } from '../../data.service';
 import { Tournament } from './tournament.model';
+import { Team } from '../tournament/Team.model';
 @Component({
   selector: 'app-create-tournament',
   templateUrl: './create-tournament.component.html',
@@ -22,9 +23,9 @@ export class CreateTournamentComponent implements OnInit {
               private router: Router) {
     this.tournament = {
       name: '',
-      teamSize: 0,
+      teamSize: 1,
       playersNumber: 0,
-      numberOfRounds: 0,
+      numberOfRounds: 1,
       userId: '',
       choosingTeamType: '',
       teams: [],
@@ -86,7 +87,7 @@ export class CreateTournamentComponent implements OnInit {
     this.setGameIdToTournament();
     this.setGameNameToTournament();
     this.setUserIdToTournament();
-    this.setChosenPlayers();
+    this.setTeams();
     this.dataService.setBasicTournamentData(this.tournament);
     this.router.navigate(['/tournament'] , { queryParams: { tournamentName: this.tournament.name} });
   }
@@ -94,6 +95,12 @@ export class CreateTournamentComponent implements OnInit {
   setChosenPlayers() {
     this.tournament.assignedUsers = this.chosenPlayers;
     this.tournament.playersNumber = this.chosenPlayers.length;
+  }
+
+  setTeams() {
+    this.setChosenPlayers();
+    this.shuffleArray(this.tournament.assignedUsers);
+    this.randomizeTeams();
   }
 
   setTeamSize(event: any) {
@@ -115,4 +122,35 @@ export class CreateTournamentComponent implements OnInit {
   setUserIdToTournament() {
     this.tournament.userId = JSON.parse(localStorage.getItem('user')).uid;
   }
+
+  shuffleArray(array: string[]): string[] {
+    array.sort(() => Math.random() - 0.5);
+    return array;
+  }
+
+  randomizeTeams() {
+    let numberOfTeams = 0;
+    let team: Team[] = [];
+    if((this.tournament.playersNumber % this.tournament.teamSize) === 0) {
+      numberOfTeams = this.tournament.playersNumber / this.tournament.teamSize;
+    } else {
+      numberOfTeams = Math.floor(1 + (this.tournament.playersNumber / this.tournament.teamSize));
+    }
+
+    let n = 0;
+    for(let i = 0; i < numberOfTeams; i++) {
+      team[i] = new Team();
+      team[i].people = [];
+
+      for(let j = 0; j < this.tournament.teamSize; j++) {
+        if(j < this.tournament.playersNumber && this.tournament.assignedUsers[n]) {
+          team[i].people[j] = this.tournament.assignedUsers[n];
+          n++;
+        }
+      }
+      const teams = team.map((obj) => { return Object.assign({}, obj); });
+      this.tournament.teams = teams;
+    }
+  }
+
 }
