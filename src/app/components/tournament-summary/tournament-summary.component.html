@@ -1,12 +1,12 @@
 <!-- TODO -->
 <!-- Change to tournament-details -->
-<h1>Turniej Monopoly is finished!</h1>
+<h1>Turniej {{tournament[0].name}} is finished!</h1>
 <div class="jumbotron jumbo-field py-4 my-4">
-  <h5 class="mb-3">Game time: <span>{{tournament[0].tournamentTime}}</span> min</h5>
-  <h5>Played rounds: <span>{{tournament[0].numberOfRounds}}</span></h5>
-  <h5>Players number: <span>{{tournament[0].playersNumber}}</span></h5>
-  <h5>Game name: <span>{{tournament[0].gameName}}</span></h5>
-  <h5>Assigned users: <span *ngFor="let user of tournament[0].assignedUsers">{{user}} |</span></h5>
+  <h5 >Game time: <span>{{tournament[0].tournamentTime}}</span> min</h5>
+  <h5 >Played rounds: <span>{{tournament[0].numberOfRounds}}</span></h5>
+  <h5 >Players number: <span>{{tournament[0].playersNumber}}</span></h5>
+  <h5 >Game name: <span>{{tournament[0].gameName}}</span></h5>
+  <h5 >Assigned users: <span *ngFor="let user of tournament[0].assignedUsers">{{user}} |</span></h5>
 
   <h3>Teams</h3>
   <div class="d-flex align-items-center">
@@ -24,7 +24,7 @@
   </div>
 </div>
 <button class="btn btn-lg custom-button px-5"
-        routerLink="../yours-tournaments">
-        Back
+        (click)="backToSite()">
+  Back
 </button>
 <!--<footer><div>Icons made by <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div></footer>-->
