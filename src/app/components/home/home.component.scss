@@ -1,15 +1,25 @@
 @import '~src/sass/variables.scss';
 @import '~src/sass/mixins.scss';
 
+@import url("https://fonts.googleapis.com/css?family=Oswald:400,500,600,700");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+
+
 .jumbotron {
-    @include shadow-light;
-    background-color: $theme-color-dark;
+  @include shadow-light;
+  background-color: $theme-color-dark;
 }
 
 .promo-container {
-    display: flex;
+  display: flex;
 
-    .screenshots {
-        max-width: 40%;
-    }
+  .screenshots {
+    max-width: 40%;
+  }
+}
+.hero-banner {
+  background: url("../../../assets/background.jpg");
+  position: relative;
+  //padding: 70px 0;
+  background-size: cover
 }
