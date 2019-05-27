@@ -12,6 +12,7 @@ export class TournamentSummaryComponent implements OnInit {
   tournament: Tournament[] = [];
   tournamentId: '';
   backToTournaments: boolean;
+  ready: boolean = false;
 
   constructor(private activeRouter: ActivatedRoute, private dataService: DataService, private router: Router) {
     this.activeRouter.queryParams.subscribe(params => {
@@ -21,6 +22,7 @@ export class TournamentSummaryComponent implements OnInit {
     this.dataService.getTournament(this.tournamentId).then(querySnapshot => {
       querySnapshot.forEach(doc => {
         this.tournament.push(doc.data() as Tournament);
+        this.ready = true;
       });
     });
   }

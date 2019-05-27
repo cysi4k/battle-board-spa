@@ -12,19 +12,16 @@
 
 a {
   color: $theme-font-color;
+  font-size: 1rem;
 }
 
 a:hover {
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 
 .games:hover {
   cursor: pointer;
-}
-
-.game {
-  font-size: 1.4rem;
 }
 
 table {
