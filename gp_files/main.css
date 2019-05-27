@@ -1,0 +1,89 @@
+body{
+    background-color:rgb(34, 40, 37);
+  }
+  .logo{
+    width:60%;
+    margin: auto;
+    text-align: center;
+    
+  }
+  .wrapper{
+    display: inline-block;
+    width: 91%;
+  }
+  .links{
+    width:8%;
+    border: white 2px solid;
+    height: 22.45rem;
+    margin: 0 auto;
+    text-align: center;
+    display: inline-block;
+    color:  white;
+  }
+  i{
+    font-size:3rem;
+    width: 100%;
+  }
+  .icon{
+    width: 100%;
+    height: 5rem;
+    margin: 0.2rem 0;
+    border-bottom: 1px white solid;
+    padding-top:0.3rem;
+    color: white;
+  }
+  .img-logo{
+    position: relative;
+    top:-1rem;
+  }
+  .img-ss{
+      width: 100%;
+      padding-top:0.2rem;
+  }
+  .col-2{
+    border:1px white solid;
+    /* height: 20rem; */
+    margin: 0 1rem;
+    color: white;
+  }
+  .col-2 p{
+    padding-top: 1rem;
+    padding-right: 0;
+    cursor: pointer;
+  }
+  .info-display{
+    top:-1rem;
+    text-align: center;
+    width:100%;
+    margin: 0 0;
+    position: relative;
+    margin: auto;
+    width: 80%;
+    height: 3rem;
+    justify-content: center;
+  }
+  .info-desc{
+    position: relative;
+    top:1rem;
+    border:1px white solid;
+    color: white;
+    width: 70%;
+    margin-left: 18%;
+    padding: 3%;
+    padding-bottom: 1.5%;
+    /* height: 15rem; */
+  }
+  #info-desc-p{
+    text-align: center;
+    width: 100%;
+  }
+  a{
+    display: inline;
+  }
+  a:hover{
+      color:white;
+  }
+  .active{
+    color:rgb(34, 40, 37);
+    background-color: white;
+  }

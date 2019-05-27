@@ -7,97 +7,90 @@
   <link rel="icon" type="image/x-icon" href="/src/assets/logo.png">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Changa+One:400,400i" rel="stylesheet">
-  <style>
-      
-      body{
-        background-color:rgb(34, 40, 37);
-      }
-      .logo{
-        width:60%;
-        margin: auto;
-        text-align: center;
-      }
-      img{
-        position: relative;
-        top:-9rem;
-      }
-      .col-2{
-        border:1px white solid;
-        /* height: 20rem; */
-        margin: 0 1rem;
-        color: white;
-      }
-      .col-2 p{
-          padding-top: 1rem;
-      }
-      .info-display{
-        top:-12rem;
-        text-align: center;
-        width:100%;
-        margin: 0 0;
-        position: relative;
-        margin: auto;
-        width: 80%;
-        height: 3rem;
-        justify-content: center;
-      }
-      .info-desc{
-        position: relative;
-        top:-10rem;
-        border:1px white solid;
-        color: white;
-        width: 70%;
-        margin: auto;
-        padding: 3%;
-      }
-      .active{
-        color:rgb(34, 40, 37);
-        background-color: white;
-      }
-  </style>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="C:\Users\ppada\Desktop\BB\gp_files\main.css">
 </head>
 <body>
-    <div class="logo">
-        <img src="C:\Users\ppada\Desktop\BB\src\assets\logo.png"/>
+    <div class="links">
+        <strong>The links</strong>
+        <a href="https://battleboard-1cfb2.firebaseapp.com/home">
+           <div class="icon">
+                <i class="fas fa-laptop-code"></i>
+                Application
+            </div> 
+        </a>
+        <a href="https://github.com/cysi4k/battle-board-spa">
+            <div class="icon">
+                <i class="fas fa-code"></i>
+                Code repo
+            </div>
+        </a>
+        <a href="https://github.com/cysi4k/battle-board-spa/projects/1">
+            <div class="icon">
+                <i class="fab fa-trello"></i>
+                Project
+            </div>
+        </a>
+        <a href="https://balsamiq.cloud/spqdpry/p75ywf0/r9760?f=N4IgUiBcCMA0IDkoAZ4GEXwDJTiAQpiALK7wBaZIA0lANoC6AvkA">
+            <div class="icon">
+                <i class="fas fa-project-diagram"></i>
+                Prototype
+            </div>
+        </a>
     </div>
-    
+    <div class="wrapper">
+        <div class="logo">
+                <img class="img-logo" src="C:\Users\ppada\Desktop\BB\src\assets\logo.png"/>
+            </div>
         <div class="row info-display">
             <div class="col-2 active" id="tab1">
-                <p>About the project</p>
+                <strong>
+                    <p>About project</p>
+                </strong>
             </div>
             <div class="col-2" id="tab2">
-                <p>Authors</p>
+                <strong>
+                    <p>Authors</p>
+                </strong>
             </div>
             <div class="col-2" id="tab3">
-                <p>About the App</p>
+                <strong>
+                    <p>About the App</p>
+                </strong>
             </div>
             <div class="col-2"id="tab4" >
-                <p>The links</p>
+                <strong>
+                    <p>Screenshots</p>
+                </strong>
             </div>
         </div>
+    </div>    
+        <div class="row info-desc"id="info-desc">
+            <p id="info-desc-p">
+                The topic of the project is "BattleBoard". The task was to create a new internet platform which will enable users to create their profiles and access features which will take playing board games to whole new level. Using the system enable to find thousands of games, create torunaments, invite friends, track time and points during the gameplay and competing to other players in the world through the ranking system. The application was created according to Single Page Application standards and is available <a href="https://battleboard-1cfb2.firebaseapp.com/home">here</a>, also make sure to check out <a href="https://github.com/cysi4k/battle-board-spa"> project repository</a> and <a href="https://github.com/cysi4k/battle-board-spa/projects/1"> project Management</a> along with the application <a href="https://balsamiq.cloud/spqdpry/p75ywf0/r9760?f=N4IgUiBcCMA0IDkoAZ4GEXwDJTiAQpiALK7wBaZIA0lANoC6AvkA">prototype</a>.
+            </p>
+        </div>
     
-    <div class="row info-desc"id="info-desc">
-        The topic of the project is "BattleBoard". The task was to create a new internet platform which will enable users to create their profiles and access features which will take playing board games to whole new level. Using the system enable to find thousands of games, create torunaments, invite friends, track time and points during the gameplay and competing to other players in the world through the ranking system. The application was created according to Single Page Application standards and is available at www.goFuckYourself.com
-    </div>
+    
     <script>
         var textValues = [
-            'The topic of the project is "BattleBoard". The task was to create a new internet platform which will enable users to create their profiles and access features which will take playing board games to whole new level. Using the system enable to find thousands of games, create torunaments, invite friends, track time and points during the gameplay and competing to other players in the world through the ranking system. The application was created according to Single Page Application standards and is available at www.goFuckYourself.com',
-            'The members of the project team:<br>Marta Chojnacka - team leader, <br> Żaneta Cichoń, <br> Przemysław Adamczyk, <br> Jakub Duda.',
-            'The main purpose of the application is to integrate board games players an help them keep track of the global board games ranking. Also some other things to be figured out soon.',
-            'Project repository: https://github.com/cysi4k/battle-board-spa, <br> Project Management: https://github.com/cysi4k/battle-board-spa/projects/1'
+            'The topic of the project is "BattleBoard". The task was to create a new internet platform which will enable users to create their profiles and access features which will take playing board games to whole new level. Using the system enable to find thousands of games, create torunaments, invite friends, track time and points during the gameplay and competing to other players in the world through the ranking system. The application was created according to Single Page Application standards and is available <a href="https://battleboard-1cfb2.firebaseapp.com/home">here</a>, also make sure to check out <a href="https://github.com/cysi4k/battle-board-spa"> project repository</a> and <a href="https://github.com/cysi4k/battle-board-spa/projects/1"> project Management</a> along with the application <a href="https://balsamiq.cloud/spqdpry/p75ywf0/r9760?f=N4IgUiBcCMA0IDkoAZ4GEXwDJTiAQpiALK7wBaZIA0lANoC6AvkA">prototype</a>.',
+            '<strong>The members of the project team are:</strong><br><br>Marta Chojnacka - team leader, <br> Żaneta Cichoń, <br> Przemysław Adamczyk, <br> Jakub Duda.',
+            'The main purpose of the application is to integrate board games players an help them keep track of the global board games ranking.<br><br><ul style="text-align:left">Application offers the following features: <li>authentication of the users,</li><li>presentation of the news from boardgames world,</li><li>presentation of the ranking of the best games,</li><li>list of games preview,</li><li>ability to create tournaments,</li><li>ability to manage tournaments,</li><li>preview the list of users tournaments,</li><li>access to global ranking,</li><li>preview of user profile.</li></ul><br>  The way application works is presented by the following use case diagram:<br><br><img class="img-ss" src="C:/Users/ppada/Desktop/BB/gp_files/img/uml.png"/>',
+            'Here are the few screenshots demostrating the functionality of the app:<br><br> 1)Application homepage<br><br><img class="img-ss" src="C:/Users/ppada/Desktop/BB/gp_files/img/homepage.jpg"/><br><br>2)Auth form<br><br><img class="img-ss" src="C:/Users/ppada/Desktop/BB/gp_files/img/login_screen.jpg"/><br><br>3)Find Game menu<br><br><img class="img-ss" src="C:/Users/ppada/Desktop/BB/gp_files/img/find_game.jpg"/><br><br>4)Create Tournament menu<br><br><img class="img-ss" src="C:/Users/ppada/Desktop/BB/gp_files/img/create_tournament.jpg"/><br><br>5)Tournament view<br><br><img class="img-ss" src="C:/Users/ppada/Desktop/BB/gp_files/img/tournament_view.jpg"/><br><br>6)Your tournaments tab<br><br><img class="img-ss" src="C:/Users/ppada/Desktop/BB/gp_files/img/your_tournaments.jpg"/><br><br> 7)Ranking list<br><br><img class="img-ss" src="C:/Users/ppada/Desktop/BB/gp_files/img/ranking_list.jpg"/>'
         ]
         var tab1 = document.getElementById("tab1");
         var tab2 = document.getElementById("tab2");
         var tab3 = document.getElementById("tab3");
         var tab4 = document.getElementById("tab4");
-        var desc = document.getElementById("info-desc");
+        var desc = document.getElementById("info-desc-p");
         
         tab1.addEventListener("click", function(){
             tab1.classList.add("active");
             tab2.classList.remove("active");
             tab3.classList.remove("active");
             tab4.classList.remove("active");
-            desc.innerText = textValues[0];
+            desc.innerHTML = textValues[0];
         });
         tab2.addEventListener("click", function(){
             tab2.classList.add("active");
@@ -111,7 +104,7 @@
             tab1.classList.remove("active");
             tab2.classList.remove("active");
             tab4.classList.remove("active");
-            desc.innerText = textValues[2];
+            desc.innerHTML = textValues[2];
         });
         tab4.addEventListener("click", function(){
             tab4.classList.add("active");
