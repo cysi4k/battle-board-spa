@@ -1,9 +1,20 @@
-span {
-    margin-left: 3rem;
+@import '~src/sass/variables.scss';
+
+h5 {
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    margin-left: 2rem;
+  }
 }
-#left {
-  text-align: left;
-}
+
+
 button {
     font-size: 1.5rem;
+}
+
+.team { 
+  background-color: $theme-color-special;
+  color: rgba($theme-color-light, 0.9)
 }

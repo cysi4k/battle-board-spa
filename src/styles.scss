@@ -4,6 +4,7 @@
 // global styles 
 * {
     font-family: 'Changa One';
+    font-size: 1.2rem;
 }
 
 body {
@@ -12,7 +13,7 @@ body {
 
 .custom-button {
     @include button-shadow;
-    border-radius: 25px;
+    border-radius: 30px;
     background-color: $theme-color-special;
     color: $theme-color-light;
 
