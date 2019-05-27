@@ -1,15 +1,32 @@
 @import '~src/sass/variables.scss';
 @import '~src/sass/mixins.scss';
 
-.jumbotron {
-    @include shadow-light;
-    background-color: $theme-color-dark;
+.hero-banner {
+  background: url("../../../assets/background.jpg");
+  background-size: cover;
+
+  h1 {
+    color: $theme-color-light;
+  }
 }
 
-.promo-container {
-    display: flex;
+a {
+  color: $theme-font-color;
+}
 
-    .screenshots {
-        max-width: 40%;
-    }
+a:hover {
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.games:hover {
+  cursor: pointer;
+}
+
+.game {
+  font-size: 1.4rem;
+}
+
+table {
+  @include shadow-light;
 }

@@ -1,94 +1,67 @@
 @import '~src/sass/variables.scss';
 @import '~src/sass/mixins.scss';
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  .dropdown-content li {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-
-  .pts-distribution{
-      display: inline-block;
-      
-  }
-  .btn-submit{
-    color: #ddd;
-    background-color: $theme-color-special;
-  }
-
-  .col-md-8{
-      text-align: center;
-  }
-  .jumbotron{
-      padding-top:10px;
-  }
-
-  .form-inputs{
-      padding-top: 1rem;
-  }
-
-  .form-inputs div{
-    margin: 0 0.3rem;
-}
-.player-name{
-    margin: 0.3rem 0.3rem;
-}
-  .dropdown:hover .dropdown-content {display: block;}
-  .dropdown-content li:hover {color: #ddd;background-color: $theme-color-special}
-  .dropdown:hover .dropbtn {color: #ddd;background-color: $theme-color-special}
-  .pts-distribution:hover {color: #ddd;background-color: $theme-color-special}
-
-.box {
-  position: relative;
-  display: inline-block;}
-
 .box select {
-  background-color: $theme-color-special-grey;
-  color: white;
-  padding: 10px;
-  width: 150px;
+  @include button-shadow;
+  background-color: $theme-color-dark;
+  color: $theme-font-color;
+  border-radius: .2rem;
+  padding: 1rem;
   border: none;
-  font-size: 20px;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  font-size: 1.25rem;
   -webkit-appearance: button;
   appearance: button;
-  outline: none;
 }
 
-.box::before {
-  content: "\f13a";
-  font-family: FontAwesome;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 20%;
-  height: 100%;
-  text-align: center;
-  font-size: 28px;
-  line-height: 45px;
-  color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(255, 255, 255, 0.1);
-  pointer-events: none;
+select:hover {
+  cursor: pointer !important;
+  color: $theme-color-light !important;
 }
 
-.box:hover::before {
-  color: rgba(255, 255, 255, 0.6);
-  background-color: rgba(255, 255, 255, 0.2);
+.container {
+  max-width: 50%;
 }
 
-.box select option {
-  padding: 30px;
+label {
+  font-size: 1.5rem;
+}
+
+.form-inputs {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+ul {
+  border-radius: .3rem;
+}
+
+li {
+  @include shadow-light;
+  background-color: $theme-color-medium;
+  border: solid 2px $theme-color-dark;
+  font-size: 1.25rem;
+  border-radius: .3rem;
+  transition: background-color 250ms ease-out;
+  overflow: auto;
+}
+
+.checked {
+  @include shadow;
+  background-color: $theme-color-dark;
+  transition: background-color 250ms ease-in;
+}
+
+img:hover {
+  cursor: pointer;
+  filter: invert(30%);
+}
+
+hr {
+  margin-top: .1rem;
+  margin-bottom: .5rem;
+}
+
+.custom-button {
+  border-radius: .3rem;
+  font-size: 2rem;
 }

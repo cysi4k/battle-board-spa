@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/data.service';
+import {Tournament} from '../create-tournament/tournament.model';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-your-tournaments',
@@ -8,34 +10,20 @@ import { DataService } from 'src/app/data.service';
 })
 export class YourTournamentsComponent implements OnInit {
   // prepare var for all tournaments
-  tournaments: any;
-  // prepare var for user tournaments
-  userTournaments: any;
+  tournaments: Tournament[] = [];
   userId: string;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
-    // fill tournaments array with data from database
-    // static example
-    this.tournaments = [
-      { name: "Tournament 1", gameName: "Game 1", numberOfRounds: 2, userId: "00uDGCSZnlfSVR0dpMaayEQkDbs1" }, // zaneta
-      { name: "Tournament 2", gameName: "Game 2", numberOfRounds: 6, userId: "XEWrCpJ6PVOE2g5jTnrHUhQVPdm2" }, // marta
-      { name: "Tournament 3", gameName: "Game 3", numberOfRounds: 3, userId: "00uDGCSZnlfSVR0dpMaayEQkDbs1" }, // zaneta
-      { name: "Tournament 4", gameName: "Game 4", numberOfRounds: 1, userId: "XEWrCpJ6PVOE2g5jTnrHUhQVPdm2" }, // marta
-    ];
-
-    // get current userId from storage 
+     this.dataService.getTournamentsForUser().then(querySnapshot => {
+     querySnapshot.forEach(doc => {this.tournaments.push(doc.data() as Tournament); });
+    });
+    // get current userId from storage
     this.userId = JSON.parse(localStorage.getItem('user')).uid;
-
-    this.getUserTournaments();
   }
 
-  // function to filter tournaments -- get tournaments for specific user 
-  // (filtered by userId in tournament collection)
-  // fill userTounaments with result 
-  getUserTournaments() {
-    this.userTournaments = this.tournaments.filter(
-      tournament => tournament.userId === this.userId);
+  openDetails(tournamentId) {
+    this.router.navigate(['/tournament-details'] , { queryParams: { tournamentId: tournamentId,  yourTournaments: true} });
   }
 }

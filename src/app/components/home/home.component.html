@@ -1,38 +1,30 @@
-<div class="jumbotron m-5 py-0 px-5 d-flex">
-  <div class="w-50 py-3">
-    <div class="d-flex">
-      <img class="mr-2" width="60" height="60" src="../../../assets/logo.png" alt="BattleBoard Logo" /> 
-      <span>
-      <h2 class="mb-0">BattleBoard</h2>
-      <div>
-        <span>Create</span>
-        <span class="mx-2">Challenge</span>
-        <span>Win</span>
-      </div>
-    </span>
+<div class="wrapper w-100 h-100">
+  <div class="hero-banner w-100 d-flex flex-column align-items-center justify-content-center">
+    <img src="../../../assets/logo.png">
+    <h1>Create - Challenge - Win</h1>
+  </div>
+  <div class="content d-flex">
+    <div class="w-50 p-5">
+      <h2>News</h2>
+      <table class="table table-hover table-bordered">
+        <tbody>
+        <tr *ngFor="let new of news  | paginate: { itemsPerPage: 10, currentPage: 1}" (click)="new.url">
+          <td><img src="./assets/text-lines.png"  height="50"></td>
+          <td><a href="{{new.url}}">{{new.title}}</a></td>
+        </tr>
+        </tbody>
+      </table>
     </div>
-  </div>
-  <div class="w-50 py-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras purus dui, lobortis ac nisl nec, finibus ornare ex. Cras vel tellus ipsum. Quisque felis urna, maximus elementum laoreet at, iaculis sit amet eros. Phasellus rhoncus tempus purus lobortis pretium. Proin vestibulum eget magna eu tincidunt. Donec aliquet hendrerit quam mollis.</div>
-</div>
-
-<div class="promo-container m-5">
-  <div class="flex-grow-1"></div>
-  <div class="features mr-4">
-    <h3>Features</h3>
-    <ul>
-      <li>crate your account</li>
-      <li>create tournaments</li>
-      <li>choose format</li>
-      <li>create your own format</li>
-      <li>manage tournaments online</li>
-      <li>invite players</li>
-      <li>choose game</li>
-    </ul>
-  </div>
-  <div class="screenshots">
-    <h3>Screenshots</h3>
-    <div>
-      <img class="mr-3 mb-3" width="100" height="100" src="../../../assets/BB_Logo.png" *ngFor="let img of [1, 2, 3, 4, 5, 6]" />
+    <div class="w-50 p-5">
+      <h2>Top games</h2>
+      <table class="table table-hover table-bordered">
+        <tbody>
+        <tr class="games" *ngFor="let game of games" (click)="goToGame(game.id)">
+          <td><img width="60" height="60" src="{{game.image_url}}"></td>
+          <td class="game">{{game.name}}</td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

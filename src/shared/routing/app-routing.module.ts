@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'create-tournament', component: CreateTournamentComponent, canActivate: [AuthGuard] },
   { path: 'ranking', component: RankingComponent, canActivate: [AuthGuard] },
   { path: 'tournament', component: TournamentComponent, canActivate: [AuthGuard] },
-  { path: 'tournament-summary', component: TournamentSummaryComponent, canActivate: [AuthGuard] },
+  { path: 'tournament-details', component: TournamentSummaryComponent, canActivate: [AuthGuard] },
   { path: 'your-tournaments', component: YourTournamentsComponent, canActivate: [AuthGuard] },
   { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] }
 ];

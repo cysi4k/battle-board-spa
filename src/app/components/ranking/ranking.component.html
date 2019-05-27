@@ -1,9 +1,16 @@
 <table class="table table-hover table-bordered">
   <tbody>
   <tr class="table">
-    <td class="tdHead">No</td>
-    <td class="tdHead">Player Name</td>
+    <td class="tdHead" (click)="print()">No</td>
+    <td class="tdHead">Tournament Name</td>
+    <td class="tdHead">Game name</td>
     <td class="tdHead">Number of points</td>
+  </tr>
+  <tr *ngFor="let tournament of bubbleSort(tournaments); let index = index" (click)="openDetails(tournament.name)">
+    <td>{{index + 1}} <img *ngIf="index==0" height="40" src="../../../assets/trophy.png"><img *ngIf="index==1" height="30" src="../../../assets/trophy2.png"><img *ngIf="index==2" height="30" src="../../../assets/trophy3.png"></td>
+    <td>{{tournament.name}}</td>
+    <td>{{tournament.gameName}}</td>
+    <td>{{returnPointsNumber(tournament.teams)}}</td>
   </tr>
   </tbody>
 </table>
