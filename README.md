@@ -1,20 +1,9 @@
-# BattleBoard
-BattleBoard is an application for board game players. It allows you to create your own player account, find tournaments of favourite board games in the area, create your own tournaments and is an opportunity to meet new people!
+<p align="center">
+  <img src="src/assets/logo.png">
+</p>
+BattleBoard is an app for board game players. You can create your own account, browse through games available in the system and create tournament to help you organise your game!
 
 ## UML Use Case Diagram
-![UML Use Case Diagram](../master/56795673_273610530195983_2529208044777111552_n.png)
-
-## Configuration 
-For development or just running app on local machine make sure to set your environment accordingly:
-[Angular Getting started](https://angular.io/guide/quickstart)
-
-Install Firebase library for Angular
-`npm install firebase @angular/fire --save`.
-
-## Development server
-
-Run `ng serve --open` for a dev server. Your browser will open on `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+<p align="center">
+  <img src="src/assets/BB_UML_Use_Case.png">
+</p>

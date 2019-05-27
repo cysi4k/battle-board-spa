@@ -1,14 +1,15 @@
 <div *ngIf="ready" class="fullscreen py-5">
-  <h1 class="mb-0">{{tournament.name}}</h1>
+  <h1>{{tournament.name}}</h1>
   <hr>
-  <h3 class="mb-5">Round number <strong class="ml-1">{{actualRound}}</strong></h3>
-  <h3>Teams</h3>
+  <h2 class="mb-5">Round number <strong class="ml-1">{{actualRound}}</strong></h2>
+  <h2>Teams</h2>
   <div class="d-flex align-items-center justify-content-center flex-wrap mb-5">
     <div class="d-flex mb-3" *ngFor="let team of tournament.teams, let index = index">
       <div class="jumbotron jumbo-field py-4 m-0">
-        Team {{ index +1 }}
+        <h3>Team {{ index +1 }}</h3>
         <li *ngFor="let player of team.people">{{player}}</li>
-        <input type="text" [(ngModel)]="points[index]" class="form-control" />
+        <h5 class="mt-3">Points earned</h5>
+        <input type="number" [(ngModel)]="points[index]" class="form-control" />
       </div>
       <span *ngIf="index+1 !== teamsNumber" class="d-flex align-items-center mx-2">vs</span>
     </div>

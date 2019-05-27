@@ -1,30 +1,28 @@
-<!-- TODO -->
-<!-- Change to tournament-details -->
-<h1>Turniej {{tournament[0].name}} is finished!</h1>
-<div class="jumbotron jumbo-field py-4 my-4">
-  <h5 >Game time: <span>{{tournament[0].tournamentTime}}</span> min</h5>
-  <h5 >Played rounds: <span>{{tournament[0].numberOfRounds}}</span></h5>
-  <h5 >Players number: <span>{{tournament[0].playersNumber}}</span></h5>
-  <h5 >Game name: <span>{{tournament[0].gameName}}</span></h5>
-  <h5 >Assigned users: <span *ngFor="let user of tournament[0].assignedUsers">{{user}} |</span></h5>
-
-  <h3>Teams</h3>
-  <div class="d-flex align-items-center">
-    <div class="d-flex mb-3" *ngFor="let team of tournament[0].teams, let index = index">
-      <div class="jumbotron jumbo-field py-4 m-0">
-        <img src="../../../assets/trophy.png" >
-        <div>
-          Points: {{team.points}}
+<div *ngIf="ready" class="py-5 d-flex flex-column align-items-center">
+  <h1>{{tournament[0].name}} tournament details</h1>
+  <div class="jumbotron jumbo-field py-4 my-4">
+    <h3>{{tournament[0].gameName}}</h3>
+    <div class="align-self-start w-100">
+      <h5>Game time: <span>{{tournament[0].tournamentTime}} min</span></h5>
+      <h5>Played rounds: <span>{{tournament[0].numberOfRounds}}</span></h5>
+      <h5>Number of players: <span>{{tournament[0].playersNumber}}</span></h5>
+    </div>
+    <h3>Teams</h3>
+    <div class="d-flex align-items-center mt-3">
+      <div class="d-flex mb-3" *ngFor="let team of tournament[0].teams, let index = index">
+        <div class="jumbotron jumbo-field team py-4 m-0">
+          <h4>TEAM {{ index +1 }}</h4>
+          <img src="../../../assets/trophy1.png" >
+          <div>{{team.points}} points</div>
+          <li class="align-self-start" *ngFor="let player of team.people">{{player}}</li>
         </div>
-        Team {{ index +1 }}
-        <li *ngFor="let player of team.people">{{player}}</li>
+        <span *ngIf="index+1 !== tournament[0].teams.length" class="d-flex align-items-center mx-2">vs</span>
       </div>
-      <span *ngIf="index+1 !== tournament[0].teams.length" class="d-flex align-items-center mx-2">vs</span>
     </div>
   </div>
+  <button class="btn btn-lg custom-button px-5 w-50"
+          (click)="backToSite()">
+          Back
+  </button>
 </div>
-<button class="btn btn-lg custom-button px-5"
-        (click)="backToSite()">
-  Back
-</button>
 <!--<footer><div>Icons made by <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div></footer>-->
