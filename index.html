@@ -8,7 +8,96 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Changa+One:400,400i" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="C:\Users\ppada\Desktop\BB\gp_files\main.css">
+  <style>
+  body{
+    background-color:rgb(34, 40, 37);
+  }
+  .logo{
+    width:60%;
+    margin: auto;
+    text-align: center;
+    
+  }
+  .wrapper{
+    display: inline-block;
+    width: 91%;
+  }
+  .links{
+    width:8%;
+    border: white 2px solid;
+    height: 22.45rem;
+    margin: 0 auto;
+    text-align: center;
+    display: inline-block;
+    color:  white;
+  }
+  i{
+    font-size:3rem;
+    width: 100%;
+  }
+  .icon{
+    width: 100%;
+    height: 5rem;
+    margin: 0.2rem 0;
+    border-bottom: 1px white solid;
+    padding-top:0.3rem;
+    color: white;
+  }
+  .img-logo{
+    position: relative;
+    top:-1rem;
+  }
+  .img-ss{
+      width: 100%;
+      padding-top:0.2rem;
+  }
+  .col-2{
+    border:1px white solid;
+    /* height: 20rem; */
+    margin: 0 1rem;
+    color: white;
+  }
+  .col-2 p{
+    padding-top: 1rem;
+    padding-right: 0;
+    cursor: pointer;
+  }
+  .info-display{
+    top:-1rem;
+    text-align: center;
+    width:100%;
+    margin: 0 0;
+    position: relative;
+    margin: auto;
+    width: 80%;
+    height: 3rem;
+    justify-content: center;
+  }
+  .info-desc{
+    position: relative;
+    top:1rem;
+    border:1px white solid;
+    color: white;
+    width: 70%;
+    margin-left: 18%;
+    padding: 3%;
+    padding-bottom: 1.5%;
+    /* height: 15rem; */
+  }
+  #info-desc-p{
+    text-align: center;
+    width: 100%;
+  }
+  a{
+    display: inline;
+  }
+  a:hover{
+      color:white;
+  }
+  .active{
+    color:rgb(34, 40, 37);
+    background-color: white;
+  }</style>
 </head>
 <body>
     <div class="links">
@@ -40,7 +129,7 @@
     </div>
     <div class="wrapper">
         <div class="logo">
-                <img class="img-logo" src="C:\Users\ppada\Desktop\BB\src\assets\logo.png"/>
+                <img class="img-logo" src="https://zapodaj.net/images/c63ecf6443684.png"/>
             </div>
         <div class="row info-display">
             <div class="col-2 active" id="tab1">
@@ -76,8 +165,8 @@
         var textValues = [
             'The topic of the project is "BattleBoard". The task was to create a new internet platform which will enable users to create their profiles and access features which will take playing board games to whole new level. Using the system enable to find thousands of games, create torunaments, invite friends, track time and points during the gameplay and competing to other players in the world through the ranking system. The application was created according to Single Page Application standards and is available <a href="https://battleboard-1cfb2.firebaseapp.com/home">here</a>, also make sure to check out <a href="https://github.com/cysi4k/battle-board-spa"> project repository</a> and <a href="https://github.com/cysi4k/battle-board-spa/projects/1"> project Management</a> along with the application <a href="https://balsamiq.cloud/spqdpry/p75ywf0/r9760?f=N4IgUiBcCMA0IDkoAZ4GEXwDJTiAQpiALK7wBaZIA0lANoC6AvkA">prototype</a>.',
             '<strong>The members of the project team are:</strong><br><br>Marta Chojnacka - team leader, <br> Żaneta Cichoń, <br> Przemysław Adamczyk, <br> Jakub Duda.',
-            'The main purpose of the application is to integrate board games players an help them keep track of the global board games ranking.<br><br><ul style="text-align:left">Application offers the following features: <li>authentication of the users,</li><li>presentation of the news from boardgames world,</li><li>presentation of the ranking of the best games,</li><li>list of games preview,</li><li>ability to create tournaments,</li><li>ability to manage tournaments,</li><li>preview the list of users tournaments,</li><li>access to global ranking,</li><li>preview of user profile.</li></ul><br>  The way application works is presented by the following use case diagram:<br><br><img class="img-ss" src="C:/Users/ppada/Desktop/BB/gp_files/img/uml.png"/>',
-            'Here are the few screenshots demostrating the functionality of the app:<br><br> 1)Application homepage<br><br><img class="img-ss" src="C:/Users/ppada/Desktop/BB/gp_files/img/homepage.jpg"/><br><br>2)Auth form<br><br><img class="img-ss" src="C:/Users/ppada/Desktop/BB/gp_files/img/login_screen.jpg"/><br><br>3)Find Game menu<br><br><img class="img-ss" src="C:/Users/ppada/Desktop/BB/gp_files/img/find_game.jpg"/><br><br>4)Create Tournament menu<br><br><img class="img-ss" src="C:/Users/ppada/Desktop/BB/gp_files/img/create_tournament.jpg"/><br><br>5)Tournament view<br><br><img class="img-ss" src="C:/Users/ppada/Desktop/BB/gp_files/img/tournament_view.jpg"/><br><br>6)Your tournaments tab<br><br><img class="img-ss" src="C:/Users/ppada/Desktop/BB/gp_files/img/your_tournaments.jpg"/><br><br> 7)Ranking list<br><br><img class="img-ss" src="C:/Users/ppada/Desktop/BB/gp_files/img/ranking_list.jpg"/>'
+            'The main purpose of the application is to integrate board games players an help them keep track of the global board games ranking.<br><br><ul style="text-align:left">Application offers the following features: <li>authentication of the users,</li><li>presentation of the news from boardgames world,</li><li>presentation of the ranking of the best games,</li><li>list of games preview,</li><li>ability to create tournaments,</li><li>ability to manage tournaments,</li><li>preview the list of users tournaments,</li><li>access to global ranking,</li><li>preview of user profile.</li></ul><br>  The way application works is presented by the following use case diagram:<br><br><img class="img-ss" src="https://zapodaj.net/images/8fdd3adbee840.png"/>',
+            'Here are the few screenshots demostrating the functionality of the app:<br><br> 1)Application homepage<br><br><img class="img-ss" src="https://zapodaj.net/images/f12d631f539e6.jpg"/><br><br>2)Auth form<br><br><img class="img-ss" src="https://zapodaj.net/images/731a6f9ed39dd.jpg"/><br><br>3)Find Game menu<br><br><img class="img-ss" src="https://zapodaj.net/images/cdcf122c5fd4c.jpg"/><br><br>4)Create Tournament menu<br><br><img class="img-ss" src="https://zapodaj.net/images/6d7b517777e83.jpg"/><br><br>5)Tournament view<br><br><img class="img-ss" src="https://zapodaj.net/images/7e288d9f7bff0.jpg"/><br><br>6)Your tournaments tab<br><br><img class="img-ss" src="https://zapodaj.net/images/51428383ae681.jpg"/><br><br> 7)Ranking list<br><br><img class="img-ss" src="https://zapodaj.net/images/f562271db2c27.jpg"/>'
         ]
         var tab1 = document.getElementById("tab1");
         var tab2 = document.getElementById("tab2");
